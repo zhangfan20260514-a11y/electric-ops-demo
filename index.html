@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>乌局电务智能运维 · 个人主页</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="multi-page.css?v=3" />
+  <link rel="stylesheet" href="corrections.css?v=4" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <img class="brand" src="assets/header-bg.png" alt="乌局电务智能运维" />
+      <nav class="primary-nav" aria-label="一级导航">
+        <button data-module="workbench">工作台</button><button class="active" data-module="person">人员管理</button><button data-module="equipment">设备管理</button><button data-module="work">作业管理</button>
+        <button data-module="health">健康评估</button><button data-module="analysis">智能分析</button><button data-module="assistant">智能助手</button><button data-module="panorama">全景运维</button><button data-module="more">更多菜单</button>
+      </nav>
+      <div class="account"><span>▥</span> 中国铁路乌鲁木齐局集团 <i></i> admin</div>
+    </header>
+
+    <aside class="sidebar">
+      <nav id="sideNav">
+        <button class="active" data-page="个人主页"><span><img src="assets/nav-home.png" alt="" /></span>个人主页</button>
+        <button data-page="人员信息"><span><img src="assets/nav-person.png" alt="" /></span>人员信息</button>
+        <button data-page="人员统计"><span><img src="assets/nav-stats.png" alt="" /></span>人员统计</button>
+        <button data-page="包保管理"><span><img src="assets/nav-package.png" alt="" /></span>包保管理</button>
+      </nav>
+    </aside>
+
+    <div class="tabbar">
+      <button class="hamburger" id="menuToggle" aria-label="菜单" aria-expanded="true">☰</button>
+      <div class="quick-tabs" id="quickTabs">
+        <button class="quick-tab" data-page="工作台">工作台</button>
+        <button class="quick-tab" data-page="耗材台账">耗材台账 <span class="tab-close" aria-label="关闭耗材台账">×</span></button>
+        <button class="quick-tab" data-page="作业数字化概览">作业数字化概览 <span class="tab-close" aria-label="关闭作业数字化概览">×</span></button>
+        <button class="quick-tab" data-page="全景可视">全景可视 <span class="tab-close" aria-label="关闭全景可视">×</span></button>
+        <button class="quick-tab" data-page="综合显示">综合显示 <span class="tab-close" aria-label="关闭综合显示">×</span></button>
+        <button class="quick-tab selected" data-page="个人主页">个人主页 <span class="tab-close" aria-label="关闭个人主页">×</span></button>
+      </div>
+    </div>
+
+    <main>
+      <div id="homePage" class="route-page">
+      <section class="panel profile-panel">
+        <h2>个人基本信息</h2>
+        <div class="profile-grid">
+          <div class="label photo-label">员工照片</div><div class="photo-cell"><img src="assets/profile.jpeg" alt="张三员工照片" /></div>
+          <div class="label">姓名</div><strong>张三</strong><div class="label">性别</div><strong>女</strong><div class="label">年龄</div><strong>22岁</strong>
+          <div class="label">部门</div><strong>IT部门</strong><div class="label">民族</div><strong>汉族</strong><div class="label">政治面貌</div><strong>群众</strong>
+          <div class="label">职级</div><strong>P5</strong><div class="label">职称</div><strong>高级工程师</strong><div class="label">星级</div><strong class="stars">★★★</strong><div class="label">综合分</div><strong>95分</strong>
+        </div>
+      </section>
+
+      <section class="panel work-panel">
+        <h2>作业日历</h2>
+        <div class="work-overview">
+          <div class="calendar-card">
+            <div class="calendar-title">本月作业 <b id="workDays">31</b>天</div>
+            <div class="calendar-controls"><select id="year"><option>2026</option><option>2025</option></select><select id="month"><option>6月</option><option>5月</option></select><span><i class="green-dot"></i> 有作业</span></div>
+            <div class="week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+            <div class="days" id="calendarDays"></div>
+            <div class="calendar-tooltip" id="calendarTooltip"><b>2026/06/17</b><span>作业次数　 <strong>3次</strong></span></div>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </div>
+
+        <div class="content-tabs" id="contentTabs">
+          <button class="active" data-tab="orders">关联派工单</button><button data-tab="issues">关联问题</button><button data-tab="alarms">集中监测报警信息</button><button data-tab="skills">人员资质</button>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>序号</th><th>派工单号（总号）</th><th>单位</th><th>车间/区间</th><th>作业日期</th><th>作业内容</th><th>作业设备</th></tr></thead><tbody id="dataRows"></tbody></table></div>
+        <div class="pagination"><button id="prevPage">‹</button><span id="pageButtons"></span><button id="nextPage">›</button><select id="pageSize"><option value="6">6条/页</option><option value="10">10条/页</option></select><span>共 <b id="totalRows">0</b> 条</span></div>
+      </section>
+      </div>
+      <div id="dynamicPage" class="route-page" hidden></div>
+    </main>
+  </div>
+
+  <div class="drawer-mask" id="drawerMask"></div>
+  <aside class="drawer" id="drawer"><div class="drawer-head"><b>派工单详情</b><button id="closeDrawer">×</button></div><div id="drawerBody"></div></aside>
+  <div class="toast" id="toast"></div>
+  <script src="config.js?v=3"></script>
+  <script src="pages.js?v=4"></script>
+  <script src="app.js?v=3"></script>
+  <script src="router.js?v=3"></script>
+</body>
+</html>

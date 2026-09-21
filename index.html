@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>乌局电务智能运维 · 个人主页</title>
+  <title>成渝中线电务智能运维系统（I-PHM） · 个人主页</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="multi-page.css?v=3" />
-  <link rel="stylesheet" href="corrections.css?v=4" />
+  <link rel="stylesheet" href="corrections.css?v=6" />
+  <link rel="stylesheet" href="responsive.css?v=7" />
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <img class="brand" src="assets/header-bg.png" alt="乌局电务智能运维" />
+      <div class="brand" aria-label="成渝中线电务智能运维系统（I-PHM）">
+        <span class="brand-emblem" aria-hidden="true"><img src="assets/header-bg.png" alt="" /></span>
+        <span class="brand-name">成渝中线电务智能运维系统<span>（I-PHM）</span></span>
+      </div>
       <nav class="primary-nav" aria-label="一级导航">
         <button data-module="workbench">工作台</button><button class="active" data-module="person">人员管理</button><button data-module="equipment">设备管理</button><button data-module="work">作业管理</button>
         <button data-module="health">健康评估</button><button data-module="analysis">智能分析</button><button data-module="assistant">智能助手</button><button data-module="panorama">全景运维</button><button data-module="more">更多菜单</button>
@@ -68,7 +72,7 @@
         <div class="content-tabs" id="contentTabs">
           <button class="active" data-tab="orders">关联派工单</button><button data-tab="issues">关联问题</button><button data-tab="alarms">集中监测报警信息</button><button data-tab="skills">人员资质</button>
         </div>
-        <div class="table-wrap"><table><thead><tr><th>序号</th><th>派工单号（总号）</th><th>单位</th><th>车间/区间</th><th>作业日期</th><th>作业内容</th><th>作业设备</th></tr></thead><tbody id="dataRows"></tbody></table></div>
+        <div class="table-wrap"><table id="homeDataTable"><thead id="dataHead"></thead><tbody id="dataRows"></tbody></table></div>
         <div class="pagination"><button id="prevPage">‹</button><span id="pageButtons"></span><button id="nextPage">›</button><select id="pageSize"><option value="6">6条/页</option><option value="10">10条/页</option></select><span>共 <b id="totalRows">0</b> 条</span></div>
       </section>
       </div>
@@ -77,11 +81,12 @@
   </div>
 
   <div class="drawer-mask" id="drawerMask"></div>
-  <aside class="drawer" id="drawer"><div class="drawer-head"><b>派工单详情</b><button id="closeDrawer">×</button></div><div id="drawerBody"></div></aside>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><div class="drawer-head"><button id="closeDrawer" aria-label="关闭"><img src="assets/drawer-close.svg" alt="" /></button><b id="drawerTitle">派工单详情</b><button class="drawer-exit" id="drawerExit">退出</button></div><div id="drawerBody"></div></aside>
+  <div class="stats-person-modal-mask" id="statsPersonModal"><section class="stats-person-modal" role="dialog" aria-modal="true" aria-labelledby="statsPersonTitle"><header><h2 id="statsPersonTitle">人员信息</h2><button class="stats-person-close" aria-label="关闭"><img src="assets/drawer-close.svg" alt="" /></button></header><div class="stats-person-context" id="statsPersonContext"></div><div class="stats-person-table-wrap"><table class="design-table stats-person-table"><thead><tr><th>序号</th><th>姓名</th><th>身份证号</th><th>电话号码</th><th>职位</th><th>职称</th><th>政治面貌</th><th>性别</th><th>资质</th><th>综合分</th></tr></thead><tbody id="statsPersonRows"></tbody></table></div><div class="stats-person-pager"><button disabled>‹</button><button class="active">1</button><span>•••</span><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><span>•••</span><button>50</button><button>›</button><select><option>10/page</option></select><span>Go to</span><input aria-label="跳转页码"></div></section></div>
   <div class="toast" id="toast"></div>
-  <script src="config.js?v=3"></script>
-  <script src="pages.js?v=4"></script>
-  <script src="app.js?v=3"></script>
-  <script src="router.js?v=3"></script>
+  <script src="config.js?v=5"></script>
+  <script src="pages.js?v=10"></script>
+  <script src="app.js?v=7"></script>
+  <script src="router.js?v=12"></script>
 </body>
 </html>

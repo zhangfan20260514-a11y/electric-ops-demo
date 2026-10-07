@@ -1,0 +1,3 @@
+请上传本文件夹里的所有内容到 GitHub 仓库根目录。
+注意：上传 index.html、所有 .js/.css 文件、assets 文件夹、README.md 等；不要再套一层 electric-ops-demo 文件夹。
+如果使用 ZIP，请先解压 ZIP，把解压后的内容上传到仓库根目录。

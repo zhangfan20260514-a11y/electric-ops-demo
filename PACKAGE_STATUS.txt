@@ -1,0 +1,10 @@
+electric-ops-demo-upload-latest package status
+source=/Users/zhangfan/Documents/Codex/2026-09-18/new-chat/outputs/electric-ops-demo
+folder=/Users/zhangfan/Desktop/electric-ops-demo-upload-latest
+index_html=True
+assets_dir=True
+total_files=226
+asset_files=185
+copied_original_images=99
+auto_fixed_refs=0
+missing_refs=0

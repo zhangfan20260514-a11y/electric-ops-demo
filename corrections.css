@@ -254,9 +254,12 @@ body.sidebar-collapsed main {
 .issue-summary em{display:flex;align-items:center;gap:4px;font-style:normal;white-space:nowrap;font-size:14px;color:#046359}.issue-summary em img{width:16px;height:16px;object-fit:contain}.issue-summary strong{font-size:24px;line-height:30px;font-family:"Arial Narrow",Arial,sans-serif;white-space:nowrap}.issue-summary small{font-family:inherit;font-size:14px;margin-left:4px}
 .issue-chart-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:20px}
 .issue-chart-card{height:470px;background:#fff;border:1px solid rgba(0,0,0,.04);padding:20px;min-width:0;overflow:hidden}
-.issue-chart-card h2{font-size:16px;margin:0 0 29px;display:flex;align-items:center;color:#33465a;line-height:22px}
+.issue-chart-card h2{font-size:16px;margin:0 0 8px;display:flex;align-items:center;color:#33465a;line-height:22px}
 .issue-chart-card h2:before{content:"";width:4px;height:20px;background:#168bf0;margin-right:8px}
-.issue-chart{height:365px;position:relative;padding:0 4px 48px 40px}
+.issue-risk-tip{min-height:32px;margin:0 0 5px;padding:6px 8px;display:flex;align-items:flex-start;gap:6px;border-radius:3px;background:#fff8e8;color:#8a5b0b;font-size:12px;line-height:18px;box-sizing:border-box}
+.issue-risk-tip i{flex:0 0 16px;width:16px;height:16px;margin-top:1px;border-radius:50%;background:#f5a623;color:#fff;font:700 11px/16px Arial;text-align:center}
+.issue-risk-tip span{min-width:0;overflow-wrap:anywhere}
+.issue-chart{height:330px;position:relative;padding:0 4px 48px 40px}
 .issue-y-axis{position:absolute;left:0;top:18px;bottom:48px;width:30px;display:flex;flex-direction:column;justify-content:space-between;color:#65717f;font-size:11px;text-align:right}
 .issue-grid{position:absolute;left:42px;right:4px;top:20px;bottom:48px;border-bottom:1px solid #cbd2da}
 .issue-grid>i{position:absolute;left:0;right:0;border-top:1px dashed #e1e6eb}

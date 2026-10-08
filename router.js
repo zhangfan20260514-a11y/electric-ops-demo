@@ -29,7 +29,7 @@
     const person=e.target.closest('.person-detail');if(person)openPersonDetail(Number(person.dataset.personId));
     const chartBar=e.target.closest('.clickable-bar');if(chartBar)openStatsPersonModal(chartBar);
     if(e.target.id==='personQuery')filterPeople();
-    if(e.target.id==='personReset'){document.querySelectorAll('.person-filter input').forEach(x=>x.value='');document.querySelectorAll('.person-filter select').forEach(x=>x.selectedIndex=0);const dir=document.querySelector('#personSortDir');if(dir){dir.dataset.dir='asc';dir.textContent='正序 ↑'}sortPeople();filterPeople();toast('人员信息筛选条件已重置')}
+    if(e.target.id==='personReset'){document.querySelectorAll('.person-filter input').forEach(x=>x.value='');document.querySelectorAll('.person-filter select').forEach(x=>x.selectedIndex=0);const sortField=document.querySelector('#personSortField');if(sortField)sortField.selectedIndex=0;const dir=document.querySelector('#personSortDir');if(dir){dir.dataset.dir='asc';dir.textContent='正序 ↑'}sortPeople();filterPeople();toast('人员信息筛选条件已重置')}
     if(e.target.id==='personSortDir'){const btn=document.querySelector('#personSortDir'),desc=btn.dataset.dir!=='desc';btn.dataset.dir=desc?'desc':'asc';btn.textContent=desc?'倒序 ↓':'正序 ↑';sortPeople()}
     if(e.target.id==='issueQuery')filterIssues();
     if(e.target.id==='issueReset')resetIssues();

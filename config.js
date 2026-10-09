@@ -11,10 +11,12 @@ window.AppConfig = {
     '#/work/orders': { title: '工单台账', module: 'work', view: 'orders' },
     '#/work/orders/detail': { title: '工单台账详情', module: 'work', view: 'orderDetail' },
     '#/health': { title: '健康评估', module: 'health', view: 'placeholder' },
-    '#/health/quality/staff': { title: '职工素质评估', module: 'health', view: 'qualityList', qualityType: 'staff' },
-    '#/health/quality/manager': { title: '车间干部素质评估', module: 'health', view: 'qualityList', qualityType: 'manager' },
-    '#/health/quality/staff/detail': { title: '职工素质评估详情', module: 'health', view: 'qualityDetail', qualityType: 'staff' },
-    '#/health/quality/manager/detail': { title: '车间干部素质评估详情', module: 'health', view: 'qualityDetail', qualityType: 'manager' },
+    '#/health/quality/staff': { title: '职工能力', module: 'health', view: 'qualityList', qualityType: 'staff' },
+    '#/health/quality/manager': { title: '干部能力', module: 'health', view: 'qualityList', qualityType: 'manager' },
+    '#/health/quality/staff/detail': { title: '职工能力详情', module: 'health', view: 'qualityDetail', qualityType: 'staff' },
+    '#/health/quality/manager/detail': { title: '干部能力详情', module: 'health', view: 'qualityDetail', qualityType: 'manager' },
+    '#/health/equipment': { title: '设备状态', module: 'health', view: 'placeholder' },
+    '#/health/organization': { title: '机构效能', module: 'health', view: 'placeholder' },
     '#/analysis': { title: '智能分析', module: 'analysis', view: 'placeholder' },
     '#/assistant': { title: '智能助手', module: 'assistant', view: 'placeholder' },
     '#/panorama': { title: '全景运维', module: 'panorama', view: 'placeholder' },
@@ -43,9 +45,12 @@ window.AppConfig = {
     ],
     work: [{title:'工单台账',route:'#/work/orders',icon:'assets/nav-package.png'}],
     health: [
-      {title:'素质评估',group:true,icon:'assets/nav-stats.png'},
-      {title:'职工素质评估',route:'#/health/quality/staff',icon:'assets/nav-person.png',child:true},
-      {title:'车间干部素质评估',route:'#/health/quality/manager',icon:'assets/nav-stats.png',child:true}
+      {title:'综合评价',group:true,icon:'assets/nav-stats.png'},
+      {title:'人员能力',subgroup:true,icon:'assets/nav-person.png'},
+      {title:'职工能力',route:'#/health/quality/staff',icon:'assets/nav-person.png',depth:2},
+      {title:'干部能力',route:'#/health/quality/manager',icon:'assets/nav-stats.png',depth:2},
+      {title:'设备状态',route:'#/health/equipment',icon:'assets/nav-package.png',depth:1},
+      {title:'机构效能',route:'#/health/organization',icon:'assets/nav-stats.png',depth:1}
     ],
     panorama: [
       {title:'应急管理',route:'#/panorama/emergency',icon:'assets/nav-home.png'},

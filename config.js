@@ -15,7 +15,7 @@ window.AppConfig = {
     '#/health/quality/manager': { title: '干部能力', module: 'health', view: 'qualityList', qualityType: 'manager' },
     '#/health/quality/staff/detail': { title: '职工能力详情', module: 'health', view: 'qualityDetail', qualityType: 'staff' },
     '#/health/quality/manager/detail': { title: '干部能力详情', module: 'health', view: 'qualityDetail', qualityType: 'manager' },
-    '#/health/equipment': { title: '设备状态', module: 'health', view: 'placeholder' },
+    '#/health/equipment': { title: '设备评估', module: 'health', view: 'placeholder' },
     '#/health/organization': { title: '机构效能', module: 'health', view: 'placeholder' },
     '#/analysis': { title: '智能分析', module: 'analysis', view: 'placeholder' },
     '#/assistant': { title: '智能助手', module: 'assistant', view: 'placeholder' },

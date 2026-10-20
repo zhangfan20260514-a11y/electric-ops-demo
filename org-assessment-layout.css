@@ -1,0 +1,5 @@
+/* 机构评估：检索条件默认一行，超出收起；点击展开显示全部 */
+.oa-page{align-items:stretch}
+.oa-tree-panel{position:relative;top:auto;height:auto;align-self:stretch}
+.oa-filter-controls{max-height:32px;overflow:hidden}
+.oa-filter-controls.expanded{max-height:none;overflow:visible}

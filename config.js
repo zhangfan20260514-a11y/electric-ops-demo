@@ -13,6 +13,8 @@ window.AppConfig = {
     '#/health': { title: '健康评估', module: 'health', view: 'placeholder' },
     '#/health/equipment-status': { title: '设备状态', module: 'health', view: 'equipmentStatus' },
     '#/health/equipment-status/detail': { title: '设备状态详情', module: 'health', view: 'equipmentStatusDetail' },
+    '#/health/org-assessment': { title: '机构评估', module: 'health', view: 'orgAssessment' },
+    '#/health/org-assessment/detail': { title: '机构评估详情', module: 'health', view: 'orgAssessmentDetail' },
     '#/health/quality/staff': { title: '职工素质评估', module: 'health', view: 'qualityList', qualityType: 'staff' },
     '#/health/quality/manager': { title: '车间干部素质评估', module: 'health', view: 'qualityList', qualityType: 'manager' },
     '#/health/quality/staff/detail': { title: '职工素质评估详情', module: 'health', view: 'qualityDetail', qualityType: 'staff' },
@@ -50,6 +52,7 @@ window.AppConfig = {
     health: [
       {title:'综合评价',group:true,icon:'assets/nav-stats.png'},
       {title:'设备状态',route:'#/health/equipment-status',icon:'assets/nav-package.png',child:true},
+      {title:'机构评估',route:'#/health/org-assessment',icon:'assets/nav-stats.png',child:true},
       {title:'素质评估',group:true,icon:'assets/nav-stats.png'},
       {title:'职工素质评估',route:'#/health/quality/staff',icon:'assets/nav-person.png',child:true},
       {title:'车间干部素质评估',route:'#/health/quality/manager',icon:'assets/nav-stats.png',child:true}

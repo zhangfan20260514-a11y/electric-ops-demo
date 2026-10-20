@@ -1,0 +1,53 @@
+.wb-business-alarm-row .wb-management-grid{height:100%;align-items:stretch}
+.wb-business-alarm-row .wb-management-grid .wb-stat-card{display:flex;min-height:292px;flex-direction:column;padding:12px 14px 10px;background:#fff}
+.wb-business-alarm-row .wb-management-grid .wb-stat-main{margin:12px 0 4px}
+.wb-fault-chart{display:grid;flex:1;min-height:0;grid-template-rows:1fr auto 1fr auto;justify-items:center;align-items:center}
+.wb-fault-donut{position:relative;display:grid;grid-row:2;place-items:center;width:124px;height:124px;border-radius:50%;background:conic-gradient(#f5c84b 0 50%,#f59e0b 50% 88.89%,#ef5350 88.89% 100%);box-shadow:0 4px 14px rgba(42,74,108,.13)}
+.wb-fault-donut:after{content:"";position:absolute;inset:28px;border-radius:50%;background:#fff}
+.wb-fault-donut>div{position:relative;z-index:1;text-align:center}
+.wb-fault-donut strong,.wb-fault-donut small{display:block}
+.wb-fault-donut strong{color:#253b53;font-size:20px;line-height:1}
+.wb-fault-donut small{margin-top:4px;color:#8190a1;font-size:12px}
+.wb-fault-legend{display:flex;grid-row:4;width:100%;align-items:center;justify-content:center;gap:16px;padding-top:8px;border-top:1px solid #edf1f5}
+.wb-fault-legend span{display:flex;align-items:center;gap:5px;color:#596d83;font-size:12px;white-space:nowrap}
+.wb-fault-legend i{width:8px;height:8px;border-radius:50%}
+.wb-fault-legend b{color:#283d54;font-size:12px}
+.wb-fault-legend .yellow{background:#f5c84b}.wb-fault-legend .orange{background:#f59e0b}.wb-fault-legend .red{background:#ef5350}
+.wb-business-alarm-row .wb-management-grid .wb-rate{margin-top:16px}
+.wb-business-alarm-row .wb-management-grid .wb-spark{flex:1;min-height:122px;height:auto;margin-top:12px}
+.wb-business-alarm-row .wb-management-grid .wb-progress-line{margin-top:28px}
+.wb-business-alarm-row .wb-management-grid .wb-progress-line+.wb-progress-line{margin-top:34px}
+.wb-rate-gauge-wrap{display:flex;flex:1;min-height:0;flex-direction:column;justify-content:space-between;align-items:stretch;padding-top:8px}
+.wb-rate-gauge{position:relative;width:100%;max-width:230px;min-height:176px;margin:auto;color:#75869a}
+.wb-rate-gauge svg{display:block;width:100%;height:auto;overflow:visible}
+.wb-gauge-track,.wb-gauge-progress{fill:none;stroke-linecap:round;stroke-width:22}
+.wb-gauge-track{stroke:#e8f0f7}
+.wb-gauge-progress{stroke:url(#wbRateGaugeGradient);stroke-dasharray:52 100;filter:drop-shadow(0 3px 5px rgba(22,139,255,.18))}
+.wb-gauge-tick{fill:none;stroke:#fff;stroke-linecap:round;stroke-width:5}
+.wb-gauge-marker-ring{fill:#fff;filter:drop-shadow(0 3px 5px rgba(25,74,118,.2))}
+.wb-gauge-marker{fill:#168bff}
+.wb-gauge-label{position:absolute;z-index:1;color:#8291a2;font-size:12px;line-height:1}
+.wb-gauge-label-low{left:2px;top:92px}.wb-gauge-label-watch{left:50%;top:0;transform:translateX(-50%)}.wb-gauge-label-high{right:0;top:92px}
+.wb-gauge-value{position:absolute;left:50%;bottom:10px;display:flex;transform:translateX(-50%);flex-direction:column;align-items:center;white-space:nowrap}
+.wb-gauge-value strong{color:#20364d;font-size:26px;line-height:1;font-weight:700}
+.wb-gauge-value strong small{font-size:15px}.wb-gauge-value>span{margin-top:7px;color:#8190a1;font-size:12px}
+.wb-percent-donut{position:relative;display:grid;place-items:center;border-radius:50%;box-shadow:0 4px 14px rgba(42,74,108,.12)}
+.wb-percent-donut:after{content:"";position:absolute;border-radius:50%;background:#fff}
+.wb-percent-donut>div{position:relative;z-index:1;text-align:center}
+.wb-percent-donut strong,.wb-percent-donut small{display:block}
+.wb-percent-donut strong{color:#253b53;font-size:18px;line-height:1}
+.wb-percent-donut small{margin-top:5px;color:#8190a1;font-size:12px}
+.wb-percent-caption{display:flex;grid-row:4;width:100%;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid #edf1f5;color:#7b8a9b;font-size:12px}
+.wb-percent-caption b{color:#17a673;font-weight:600}
+.wb-plan-donuts{display:flex;flex:1;min-height:0;flex-direction:column;justify-content:space-evenly;padding:4px 0}
+.wb-plan-donut-row{display:flex;align-items:center;gap:12px}
+.wb-plan-donut-row+.wb-plan-donut-row{padding-top:10px;border-top:1px solid #edf1f5}
+.wb-plan-donut-row .wb-percent-donut{flex:0 0 82px;width:82px;height:82px}
+.wb-plan-donut-row .wb-percent-donut:after{inset:18px}
+.wb-plan-donut-row .wb-percent-donut strong{font-size:16px}
+.wb-plan-donut-row .weekly{background:conic-gradient(#168bff 0 96%,#e8edf4 96% 100%)}
+.wb-plan-donut-row .monthly{background:conic-gradient(#21b97a 0 94%,#e8edf4 94% 100%)}
+.wb-plan-donut-row>span{display:flex;min-width:0;flex-direction:column;gap:6px}
+.wb-plan-donut-row>span b{color:#31465c;font-size:13px;line-height:1.35}
+.wb-plan-donut-row>span small{color:#8795a5;font-size:12px}
+@media(max-width:1450px){.wb-business-alarm-row .wb-management-grid .wb-stat-card{min-height:278px}.wb-fault-donut{width:112px;height:112px}.wb-fault-donut:after{inset:25px}.wb-rate-gauge{max-width:205px;min-height:162px}.wb-gauge-label-low,.wb-gauge-label-high{top:81px}.wb-gauge-value{bottom:8px}.wb-fault-legend{gap:10px}}

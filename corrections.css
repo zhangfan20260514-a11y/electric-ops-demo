@@ -300,3 +300,162 @@ body.sidebar-collapsed main {
 .upload-box{height:112px;border:1px solid #d9d9d9;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#627080}.upload-box input{position:absolute;inset:0;opacity:0;cursor:pointer}.upload-box b{font-size:14px;font-weight:400;margin-top:7px}.upload-box em{font-style:normal;font-size:11px;color:#9aa3ae;margin-top:4px}.upload-box.has-file{border-color:#1890ff;background:#f5faff}.upload-icon{width:22px;height:18px;border:2px solid #1890ff;border-radius:2px;position:relative}.upload-icon:before{content:"";position:absolute;width:8px;height:4px;border:2px solid #1890ff;border-bottom:0;left:5px;top:-7px;border-radius:3px 3px 0 0}
 .emergency-modal footer{height:58px;margin:22px -28px 0;padding:12px 22px;border-top:1px solid #edf0f4;display:flex;justify-content:flex-end;gap:10px}.emergency-modal footer button{height:32px;padding:0 18px;border:1px solid #d9d9d9;background:#fff;cursor:pointer}.emergency-modal footer .primary-action{background:#168bf0;color:#fff;border-color:#168bf0}
 @media(max-width:1400px){.ledger-page>.filter-bar{gap:14px}.ledger-page>.filter-bar select{width:165px}.emergency-modal{width:620px}}
+/* 全流程预览：流程卡片状态视觉统一 */
+.ep-preview-drawer .ep-mind-node {
+  --ep-mind-status: #8c8c8c;
+  --ep-mind-status-soft: #f2f3f5;
+  border: 2px solid var(--ep-mind-status) !important;
+  border-left-width: 2px !important;
+  overflow: hidden;
+}
+
+.ep-preview-drawer .ep-mind-node::before,
+.ep-preview-drawer .ep-mind-node::after {
+  display: none !important;
+}
+
+.ep-preview-drawer .ep-mind-node > header {
+  min-height: 60px !important;
+  height: 60px !important;
+  box-sizing: border-box;
+  display: grid !important;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center !important;
+  column-gap: 10px;
+  padding: 0 12px !important;
+  background: var(--ep-mind-status-soft) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--ep-mind-status) 25%, transparent) !important;
+}
+
+.ep-preview-drawer .ep-mind-node > header > img {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px;
+  box-sizing: border-box;
+  padding: 6px;
+  border-radius: 50% !important;
+  background: var(--ep-mind-status) !important;
+  object-fit: contain;
+}
+
+.ep-preview-drawer .ep-mind-node > header > b {
+  min-width: 0;
+  margin: 0 !important;
+  font-size: 24px !important;
+  line-height: 28px !important;
+  font-weight: 700 !important;
+  color: #1f2d3d;
+  overflow-wrap: anywhere;
+}
+
+.ep-preview-drawer .ep-mind-node > header > span:last-child {
+  flex: none;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.ep-preview-drawer .ep-mind-node.ep-mind-idle {
+  --ep-mind-status: #8c8c8c;
+  --ep-mind-status-soft: #f2f3f5;
+}
+
+.ep-preview-drawer .ep-mind-node.ep-mind-running,
+.ep-preview-drawer .ep-mind-node.ep-mind-active {
+  --ep-mind-status: #168bff;
+  --ep-mind-status-soft: #eaf4ff;
+}
+
+.ep-preview-drawer .ep-mind-node.ep-mind-done,
+.ep-preview-drawer .ep-mind-node.ep-mind-complete,
+.ep-preview-drawer .ep-mind-node.ep-mind-finished {
+  --ep-mind-status: #20b26b;
+  --ep-mind-status-soft: #eaf8f1;
+}
+
+.ep-preview-drawer .ep-mind-node.ep-mind-half,
+.ep-preview-drawer .ep-mind-node.ep-mind-warning {
+  --ep-mind-status: #f5b800;
+  --ep-mind-status-soft: #fff8db;
+}
+
+.ep-preview-drawer .ep-mind-node.ep-mind-ten,
+.ep-preview-drawer .ep-mind-node.ep-mind-urgent {
+  --ep-mind-status: #ff6b2c;
+  --ep-mind-status-soft: #fff0e8;
+}
+
+.ep-preview-drawer .ep-mind-node.ep-mind-timeout,
+.ep-preview-drawer .ep-mind-node.ep-mind-overdue {
+  --ep-mind-status: #f5222d;
+  --ep-mind-status-soft: #fff0f1;
+}
+/* 全流程预览：状态色圆形底 + 纯白描边图标；标题单行省略 */
+.ep-preview-drawer .ep-mind-node > header > .ep-mind-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  background: var(--ep-node-accent, #8c8c8c);
+}
+
+.ep-preview-drawer .ep-mind-node > header > .ep-mind-icon > img {
+  width: 18px !important;
+  height: 18px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.ep-preview-drawer .ep-mind-node > header > b {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+/* Full-process preview card spacing: 40px vertically, 80px horizontally. */
+@media (min-width: 1100px) {
+  body.ep-preview-open .ep-preview-shell.open .ep-preview-drawer {
+    left: 208px !important;
+    right: 0 !important;
+    width: calc(100vw - 208px) !important;
+    max-width: none !important;
+  }
+
+  body.ep-preview-open .ep-preview-shell.open .ep-preview-body {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  body.ep-preview-open .ep-preview-shell.open .ep-mind-groups {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    column-gap: 80px !important;
+    row-gap: 0 !important;
+    align-items: start !important;
+  }
+
+  body.ep-preview-open .ep-preview-shell.open .ep-mind-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+    margin: 0 !important;
+  }
+
+  body.ep-preview-open .ep-preview-shell.open .ep-mind-group > .ep-mind-node {
+    margin: 0 !important;
+  }
+}
+/* Full-process preview canvas: round only the two upper corners. */
+body.ep-preview-open .ep-preview-shell.open .ep-preview-drawer .ep-preview-body .ep-mind-canvas {
+  border-radius: 20px 20px 0 0 !important;
+  overflow: hidden;
+}

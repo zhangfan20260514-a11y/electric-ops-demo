@@ -1,6 +1,6 @@
 window.AppConfig = {
   routes: {
-    '#/workbench': { title: '工作台', module: 'workbench', view: 'placeholder' },
+    '#/workbench': { title: '工作台', module: 'workbench', view: 'workbench' },
     '#/person/home': { title: '个人主页', module: 'person', view: 'home' },
     '#/person/list': { title: '人员信息', module: 'person', view: 'personList' },
     '#/person/statistics': { title: '人员统计', module: 'person', view: 'personStats' },
@@ -32,6 +32,9 @@ window.AppConfig = {
   },
   moduleDefaults: { workbench:'#/workbench', person:'#/person/home', equipment:'#/equipment/spares', work:'#/work/orders', health:'#/health/quality/staff', analysis:'#/analysis', assistant:'#/assistant', panorama:'#/panorama/emergency', more:'#/more' },
   menus: {
+    workbench: [
+      {title:'工作台',route:'#/workbench',icon:'assets/nav-home.png'}
+    ],
     person: [
       {title:'个人主页',route:'#/person/home',icon:'assets/nav-home.png'},
       {title:'人员信息',route:'#/person/list',icon:'assets/nav-person.png'},

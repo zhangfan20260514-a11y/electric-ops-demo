@@ -1,0 +1,13 @@
+.wb-weather{display:flex;align-items:center;gap:10px;margin-left:24px;padding-left:24px;border-left:1px solid #dce6f0}
+.wb-weather-copy{display:grid;gap:2px;text-align:right}
+.wb-weather-copy strong{color:#263b52;font-size:25px;line-height:1}
+.wb-weather-copy sup{margin-left:2px;color:#6f8093;font-size:12px;font-weight:500}
+.wb-weather-copy span{color:#7e8ea0;font-size:11px;white-space:nowrap}
+.wb-weather-icon{width:53px;height:53px;filter:drop-shadow(0 4px 5px rgba(244,174,25,.14))}
+@media(max-width:1180px){.wb-weather{margin-left:auto;padding-left:16px}.wb-role-select{margin-left:14px;padding-left:14px}}
+@media(max-width:900px){.wb-weather-copy span{display:none}.wb-weather{gap:5px;padding-left:10px}.wb-weather-icon{width:44px;height:44px}}
+.wb-date .wb-weather{justify-content:flex-end;gap:7px;margin:0;padding:0;border-left:0}
+.wb-date .wb-weather-copy{display:flex;align-items:baseline;gap:7px;order:2}
+.wb-date .wb-weather-copy strong{font-size:16px}
+.wb-date .wb-weather-copy span{display:inline;color:#7e8ea0;font-size:12px}
+.wb-date .wb-weather-icon{order:1;width:31px;height:31px;filter:drop-shadow(0 2px 3px rgba(244,174,25,.14))}

@@ -1,0 +1,23 @@
+/* 全流程预览：仅“3、掌握人员动态与协调行车”的子项采用两列纵向排列 */
+.ep-preview-drawer .ep-mind-groups > .ep-mind-group:first-of-type > .ep-mind-node.ep-mind-half:nth-of-type(4) > ul {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(22px, auto));
+  grid-auto-flow: column;
+  column-gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+.ep-preview-drawer .ep-mind-groups > .ep-mind-group:first-of-type > .ep-mind-node.ep-mind-half:nth-of-type(4) > ul > li {
+  min-width: 0;
+  margin: 0;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .ep-preview-drawer .ep-mind-groups > .ep-mind-group:first-of-type > .ep-mind-node.ep-mind-half:nth-of-type(4) > ul {
+    column-gap: 12px;
+  }
+}

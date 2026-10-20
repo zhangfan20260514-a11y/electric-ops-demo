@@ -9,10 +9,22 @@
   <link rel="stylesheet" href="corrections.css?v=10" />
   <link rel="stylesheet" href="responsive.css?v=11" />
   <link rel="stylesheet" href="panorama-screen.css?v=5" />
-  <link rel="stylesheet" href="emergency-process.css?v=29" />
+  <link rel="stylesheet" href="emergency-process.css?v=37" />
   <link rel="stylesheet" href="panorama-maintenance.css?v=1" />
   <link rel="stylesheet" href="quality-assessment.css?v=8" />
   <link rel="stylesheet" href="quality-detail.css?v=21" />
+  <link rel="stylesheet" href="workbench.css?v=4" />
+  <link rel="stylesheet" href="workbench-actions.css?v=1" />
+  <link rel="stylesheet" href="workbench-refinements.css?v=3" />
+  <link rel="stylesheet" href="workbench-weather.css?v=3" />
+  <link rel="stylesheet" href="workbench-icons.css?v=2" />
+  <link rel="stylesheet" href="workbench-side-layout.css?v=3" />
+  <link rel="stylesheet" href="workbench-alarm-list.css?v=4" />
+  <link rel="stylesheet" href="workbench-stat-layout.css?v=8" />
+  <link rel="stylesheet" href="workbench-management.css?v=4" />
+  <link rel="stylesheet" href="preview-icon-status.css">
+  <link rel="stylesheet" href="preview-node-three.css?v=20261020">
+  <link rel="stylesheet" href="preview-node-three.css?v=20261020">
 </head>
 <body>
   <div class="app-shell">
@@ -89,14 +101,19 @@
   <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><div class="drawer-head"><button id="closeDrawer" aria-label="关闭"><img src="assets/drawer-close.svg" alt="" /></button><b id="drawerTitle">派工单详情</b><button class="drawer-exit" id="drawerExit">退出</button></div><div id="drawerBody"></div></aside>
   <div class="stats-person-modal-mask" id="statsPersonModal"><section class="stats-person-modal" role="dialog" aria-modal="true" aria-labelledby="statsPersonTitle"><header><h2 id="statsPersonTitle">人员信息</h2><button class="stats-person-close" aria-label="关闭"><img src="assets/drawer-close.svg" alt="" /></button></header><div class="stats-person-context" id="statsPersonContext"></div><div class="stats-person-table-wrap"><table class="design-table stats-person-table"><thead><tr><th>序号</th><th>姓名</th><th>身份证号</th><th>电话号码</th><th>职位</th><th>职称</th><th>政治面貌</th><th>性别</th><th>资质</th><th>综合分</th></tr></thead><tbody id="statsPersonRows"></tbody></table></div><div class="stats-person-pager"><button disabled>‹</button><button class="active">1</button><span>•••</span><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><span>•••</span><button>50</button><button>›</button><select><option>10/page</option></select><span>Go to</span><input aria-label="跳转页码"></div></section></div>
   <div class="toast" id="toast"></div>
-  <script src="config.js?v=11"></script>
+  <script src="config.js?v=12"></script>
   <script src="pages.js?v=13"></script>
+  <script src="workbench.js?v=2"></script>
+  <script src="workbench-actions.js?v=1"></script>
+  <script src="workbench-refinements.js?v=13"></script>
+  <script src="workbench-icons.js?v=1"></script>
   <script src="panorama-screen.js?v=7"></script>
-  <script src="emergency-process.js?v=31"></script>
+  <script src="emergency-process.js?v=38"></script>
   <script src="panorama-maintenance.js?v=2"></script>
   <script src="quality-assessment-data.js?v=5"></script>
   <script src="quality-assessment.js?v=22"></script>
   <script src="app.js?v=7"></script>
   <script src="router.js?v=17"></script>
+  <script src="preview-enhancements.js"></script>
 </body>
 </html>

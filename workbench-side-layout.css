@@ -1,0 +1,23 @@
+.wb-business-alarm-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:14px;min-width:0}
+.wb-business-alarm-row>.wb-panel{margin:0;min-width:0}
+.wb-business-alarm-row .wb-device-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wb-business-alarm-row .wb-business .wb-stat-card{min-height:260px;padding:12px}
+.wb-business-alarm-row .wb-type-pie-wrap{grid-template-columns:76px minmax(0,1fr);grid-template-rows:1fr auto;gap:5px 10px;min-height:102px}
+.wb-business-alarm-row .wb-type-pie{width:70px;height:70px}
+.wb-business-alarm-row .wb-type-pie:after{inset:16px}
+.wb-business-alarm-row .wb-type-pie strong{font-size:15px}
+.wb-business-alarm-row .wb-type-legend{grid-template-columns:repeat(2,minmax(58px,1fr));gap:6px 8px;font-size:11px}
+.wb-business-alarm-row .wb-type-legend em{font-size:12px}
+.wb-business-alarm-row .wb-type-trend{grid-column:1/3;justify-self:end}
+.wb-business-alarm-row .wb-alarm-table{overflow-x:hidden}
+.wb-business-alarm-row .wb-alarm-table th,.wb-business-alarm-row .wb-alarm-table td{padding-left:6px;padding-right:6px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(1){width:40px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(2){width:60px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(3){width:74px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(4){width:90px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(5){width:65px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(7){width:130px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(8){width:66px}
+.wb-business-alarm-row .wb-alarm-table th:nth-child(9){width:72px}
+@media(max-width:1100px){.wb-business-alarm-row{grid-template-columns:1fr}.wb-business-alarm-row .wb-device-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.wb-business-alarm-row .wb-device-grid{grid-template-columns:1fr}}

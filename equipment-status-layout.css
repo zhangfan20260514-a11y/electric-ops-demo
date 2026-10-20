@@ -1,0 +1,15 @@
+/* 设备状态页：筛选、统计、列表的上中下布局 */
+.es-page{align-items:stretch}
+.es-tree-panel{position:relative;top:auto;height:auto;min-height:100%;align-self:stretch;background:#fff}
+.es-filter{position:relative;display:block;padding-right:92px;margin:16px 0 14px}
+.es-filter-controls{display:flex;flex-wrap:wrap;gap:10px;max-height:30px;overflow:hidden}
+.es-filter-controls.expanded{max-height:none;overflow:visible}
+.es-filter-toggle{position:absolute;right:14px;top:16px;color:#0879f9!important;border-color:#9dcaff!important;background:#fff!important}
+.es-filter-toggle[hidden]{display:none}
+.es-statistics{background:#fff;border:1px solid #e5ebf2;padding:0 14px 14px;margin-bottom:14px}
+.es-section-title{height:52px;display:flex;align-items:center;justify-content:space-between}
+.es-section-title h2{margin:0}.es-section-title span{font-size:12px;color:#8995a4}
+.es-statistics .es-score-cards{margin:0 0 14px}
+.es-statistics .es-charts{margin-top:0}
+.es-table-card{margin-top:0}
+@media(max-width:1350px){.es-filter{padding-right:84px}.es-filter-controls{max-height:30px}}

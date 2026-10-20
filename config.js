@@ -10,13 +10,13 @@ window.AppConfig = {
     '#/equipment/spares': { title: '备品台账', module: 'equipment', view: 'spares' },
     '#/work/orders': { title: '工单台账', module: 'work', view: 'orders' },
     '#/work/orders/detail': { title: '工单台账详情', module: 'work', view: 'orderDetail' },
-    '#/health': { title: '综合评价', module: 'health', view: 'placeholder' },
-    '#/health/quality/staff': { title: '职工能力', module: 'health', view: 'qualityList', qualityType: 'staff' },
-    '#/health/quality/manager': { title: '干部能力', module: 'health', view: 'qualityList', qualityType: 'manager' },
-    '#/health/quality/staff/detail': { title: '职工能力详情', module: 'health', view: 'qualityDetail', qualityType: 'staff' },
-    '#/health/quality/manager/detail': { title: '干部能力详情', module: 'health', view: 'qualityDetail', qualityType: 'manager' },
-    '#/health/equipment': { title: '设备评估', module: 'health', view: 'placeholder' },
-    '#/health/organization': { title: '机构效能', module: 'health', view: 'placeholder' },
+    '#/health': { title: '健康评估', module: 'health', view: 'placeholder' },
+    '#/health/equipment-status': { title: '设备状态', module: 'health', view: 'equipmentStatus' },
+    '#/health/equipment-status/detail': { title: '设备状态详情', module: 'health', view: 'equipmentStatusDetail' },
+    '#/health/quality/staff': { title: '职工素质评估', module: 'health', view: 'qualityList', qualityType: 'staff' },
+    '#/health/quality/manager': { title: '车间干部素质评估', module: 'health', view: 'qualityList', qualityType: 'manager' },
+    '#/health/quality/staff/detail': { title: '职工素质评估详情', module: 'health', view: 'qualityDetail', qualityType: 'staff' },
+    '#/health/quality/manager/detail': { title: '车间干部素质评估详情', module: 'health', view: 'qualityDetail', qualityType: 'manager' },
     '#/analysis': { title: '智能分析', module: 'analysis', view: 'placeholder' },
     '#/assistant': { title: '智能助手', module: 'assistant', view: 'placeholder' },
     '#/panorama': { title: '全景应急', module: 'panorama', view: 'placeholder' },
@@ -30,7 +30,7 @@ window.AppConfig = {
     '#/panorama/travel': { title: '出行交通信息维护', module: 'panorama', view: 'travelMaintenance' },
     '#/more': { title: '更多菜单', module: 'more', view: 'placeholder' }
   },
-  moduleDefaults: { workbench:'#/workbench', person:'#/person/home', equipment:'#/equipment/spares', work:'#/work/orders', health:'#/health/quality/staff', analysis:'#/analysis', assistant:'#/assistant', panorama:'#/panorama/emergency', more:'#/more' },
+  moduleDefaults: { workbench:'#/workbench', person:'#/person/home', equipment:'#/equipment/spares', work:'#/work/orders', health:'#/health/equipment-status', analysis:'#/analysis', assistant:'#/assistant', panorama:'#/panorama/emergency', more:'#/more' },
   menus: {
     workbench: [
       {title:'工作台',route:'#/workbench',icon:'assets/nav-home.png'}
@@ -48,11 +48,11 @@ window.AppConfig = {
     ],
     work: [{title:'工单台账',route:'#/work/orders',icon:'assets/nav-package.png'}],
     health: [
-      {title:'人员能力',subgroup:true,icon:'assets/nav-person.png'},
-      {title:'职工能力',route:'#/health/quality/staff',icon:'assets/nav-person.png',depth:2},
-      {title:'干部能力',route:'#/health/quality/manager',icon:'assets/nav-stats.png',depth:2},
-      {title:'设备状态',route:'#/health/equipment',icon:'assets/nav-package.png',depth:1},
-      {title:'机构效能',route:'#/health/organization',icon:'assets/nav-stats.png',depth:1}
+      {title:'综合评价',group:true,icon:'assets/nav-stats.png'},
+      {title:'设备状态',route:'#/health/equipment-status',icon:'assets/nav-package.png',child:true},
+      {title:'素质评估',group:true,icon:'assets/nav-stats.png'},
+      {title:'职工素质评估',route:'#/health/quality/staff',icon:'assets/nav-person.png',child:true},
+      {title:'车间干部素质评估',route:'#/health/quality/manager',icon:'assets/nav-stats.png',child:true}
     ],
     panorama: [
       {title:'应急管理',route:'#/panorama/emergency',icon:'assets/nav-home.png'},

@@ -50,12 +50,11 @@ window.AppConfig = {
     ],
     work: [{title:'工单台账',route:'#/work/orders',icon:'assets/nav-package.png'}],
     health: [
-      {title:'综合评价',group:true,icon:'assets/nav-stats.png'},
-      {title:'设备状态',route:'#/health/equipment-status',icon:'assets/nav-package.png',child:true},
-      {title:'机构评估',route:'#/health/org-assessment',icon:'assets/nav-stats.png',child:true},
       {title:'素质评估',group:true,icon:'assets/nav-stats.png'},
       {title:'职工素质评估',route:'#/health/quality/staff',icon:'assets/nav-person.png',child:true},
-      {title:'车间干部素质评估',route:'#/health/quality/manager',icon:'assets/nav-stats.png',child:true}
+      {title:'车间干部素质评估',route:'#/health/quality/manager',icon:'assets/nav-stats.png',child:true},
+      {title:'设备状态',route:'#/health/equipment-status',icon:'assets/nav-package.png'},
+      {title:'机构评估',route:'#/health/org-assessment',icon:'assets/nav-stats.png'}
     ],
     panorama: [
       {title:'应急管理',route:'#/panorama/emergency',icon:'assets/nav-home.png'},

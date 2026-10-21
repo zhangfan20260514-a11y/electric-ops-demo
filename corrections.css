@@ -328,9 +328,9 @@ body.sidebar-collapsed main {
 }
 
 .ep-preview-drawer .ep-mind-node > header > img {
-  width: 30px !important;
-  height: 30px !important;
-  min-width: 30px;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px;
   box-sizing: border-box;
   padding: 0;
   border-radius: 50% !important;
@@ -392,18 +392,19 @@ body.sidebar-collapsed main {
 }
 /* 全流程预览：图标 PNG 自带「状态色圆底 + 白色图形」，包裹层只做尺寸与定位 */
 .ep-preview-drawer .ep-mind-node > header > .ep-mind-icon {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  flex: 0 0 30px;
+  flex: 0 0 32px;
   background: transparent;
 }
 
 .ep-preview-drawer .ep-mind-node > header > .ep-mind-icon > img {
-  width: 30px !important;
-  height: 30px !important;
+  width: 32px !important;
+  height: 32px !important;
+  max-width: none !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 50% !important;

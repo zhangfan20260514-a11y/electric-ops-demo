@@ -20,7 +20,7 @@
   function refineWorkbench(root) {
     if (!root || !root.classList.contains('wb-page')) return;
     const alarmTitle = root.querySelector('.wb-alarms .wb-section-head h2');
-    if (alarmTitle && alarmTitle.firstChild) alarmTitle.firstChild.nodeValue = '报警推送 ';
+    if (alarmTitle && alarmTitle.firstChild && !alarmTitle.closest('.wb-alarmrate')) alarmTitle.firstChild.nodeValue = '报警推送 ';
     root.querySelector('.wb-summary')?.remove();
     const welcome = root.querySelector('.wb-welcome');
     if (welcome && !welcome.querySelector('.wb-weather')) {
@@ -62,7 +62,7 @@
     if (management && !management.dataset.denseReady) {
       management.dataset.denseReady = 'true';
       const faultSegments = management.querySelector('.wb-stat-card:first-child .wb-segments');
-      if (faultSegments) faultSegments.innerHTML = `<div class="wb-fault-chart">
+      if (faultSegments) faultSegments.innerHTML = `<div class="wb-fault-scope">包保工区：<b>成都东信号工区</b></div><div class="wb-fault-chart">
         <div class="wb-fault-donut" role="img" aria-label="安全信息9，故障7，事故2"><div><strong>18</strong><small>故障合计</small></div></div>
         <div class="wb-fault-legend"><span><i class="yellow"></i>安全信息 <b>9</b></span><span><i class="orange"></i>故障 <b>7</b></span><span><i class="red"></i>事故 <b>2</b></span></div>
       </div>`;
@@ -83,7 +83,10 @@
             </svg>
             <div class="wb-gauge-value"><strong>5.2<small>%</small></strong><span>当前报警率</span></div>
           </div>
-          <div class="wb-percent-caption"><span>目标值 ≤ 6%</span><b>较上期 ↓0.4%</b></div>
+          <div class="wb-rate-ranks" role="list" aria-label="报警率排名">
+            <span role="listitem"><i class="wb-rank-badge">2</i>车间排名<b>2</b><small>/6</small></span>
+            <span role="listitem"><i class="wb-rank-badge">5</i>段排名<b>5</b><small>/18</small></span>
+          </div>
         </div>`;
       const planCard = management.querySelector('.wb-stat-card:nth-child(3)');
       if (planCard) planCard.innerHTML = `<header><span>计划完成率</span></header>

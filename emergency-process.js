@@ -45,7 +45,7 @@
     ],
     12:[{name:'生成复盘报告',type:'report'}]
   };
-  let state=null,timer=null,previewDrawer=null,previewClosing=false,previewScrollY=0;
+  let state=null,timer=null,previewDrawer=null,previewClosing=false,previewScrollY=0,previewLinkObserver=null,previewLinkFrame=0;
   let resourceDrawer=null,resourceClosing=false,resourceTabKey='travel',resourceDeviceType='轨道电路',contactDraft=[],registerDraft='',spareDraft=[],libraryDraft='';
   const resourceTabs=[['travel','出行信息'],['contacts','联系人信息'],['docs','资料库'],['spares','备品库信息'],['plans','应急预案库信息'],['experts','专家库信息']];
   const emergencyDevices=[
@@ -102,10 +102,58 @@
   function previewTreeNode(step,i){const key=getStatus(step),meta=STATUS[key];return `<article class="ep-mind-node ep-mind-${key}" data-preview-step="${i}" style="--ep-mind-color:${meta.color}"><header><img src="${iconFor(i,key)}" alt="" class="ep-status-icon ep-status-icon-${key}"><b>${i}、${step.name}</b><span data-preview-status>${meta.label}</span></header><ul>${step.children.map(child=>`<li><i>${child.id}</i><em>${child.name}</em></li>`).join('')||'<li class="ep-mind-empty">暂无子项</li>'}</ul></article>`}
   function previewTreeMarkup(){const columnCount=3,base=Math.floor(state.steps.length/columnCount),extra=state.steps.length%columnCount;let start=0;const columns=Array.from({length:columnCount},(_,column)=>{const size=base+(column>=columnCount-extra?1:0),ids=Array.from({length:size},(_,offset)=>start+offset);start+=size;return `<section class="ep-mind-group" data-preview-column="${column+1}">${ids.map(i=>previewTreeNode(state.steps[i],i)).join('')}</section>`}).join('');return `<div class="ep-mind-canvas"><div class="ep-mind-groups">${columns}</div></div>`}
   function updatePreviewDrawer(){if(!previewDrawer)return;const total=previewDrawer.querySelector('[data-preview-total]');if(total)total.textContent=`${Math.floor(state.totalSeconds/60)}分`;previewDrawer.querySelectorAll('[data-preview-step]').forEach(node=>{const step=state.steps[Number(node.dataset.previewStep)];if(!step)return;const key=getStatus(step),meta=STATUS[key];node.className=`ep-mind-node ep-mind-${key}`;node.style.setProperty('--ep-mind-color',meta.color);const badge=node.querySelector('[data-preview-status]');if(badge)badge.textContent=meta.label})}
+  // 全流程预览：按节点顺序绘制连接线（同列垂直，跨列使用列间圆角回形线）
+  function drawPreviewLinks(){
+    const groups=previewDrawer?.querySelector('.ep-mind-groups');if(!groups)return;
+    groups.querySelector('.ep-mind-links')?.remove();
+    const nodes=[...groups.querySelectorAll('.ep-mind-node')];if(nodes.length<2)return;
+    const gb=groups.getBoundingClientRect();
+    const NS='http://www.w3.org/2000/svg';
+    const svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('class','ep-mind-links');
+    svg.setAttribute('width',gb.width);svg.setAttribute('height',gb.height);
+    svg.setAttribute('viewBox',`0 0 ${gb.width} ${gb.height}`);
+    svg.setAttribute('aria-hidden','true');
+    svg.innerHTML='<defs><marker id="epLinkArrow" markerWidth="14" markerHeight="18" refX="12" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path class="ep-link-marker" d="M0 0 L14 9 L0 18 Z" style="fill:#bfc1c4;stroke:none;opacity:.9"/></marker></defs>';
+    const addAnchor=(x,y)=>{const dot=document.createElementNS(NS,'circle');dot.setAttribute('class','ep-link-anchor');dot.setAttribute('cx',x);dot.setAttribute('cy',y);dot.setAttribute('r',6.5);svg.appendChild(dot)};
+    nodes.forEach((n,i)=>{
+      if(i===nodes.length-1)return;
+      const a=n.getBoundingClientRect(),b=nodes[i+1].getBoundingClientRect();
+      const aLeft=a.left-gb.left,bLeft=b.left-gb.left;
+      const sameCol=Math.abs(aLeft-bLeft)<4;
+      let x1,y1,x2,y2,pathData,verticalArrow=null;
+      if(sameCol){
+        x1=aLeft+a.width/2;y1=a.bottom-gb.top;x2=x1;y2=b.top-gb.top-9;
+        pathData=`M${x1} ${y1+7} L${x2} ${y2}`;
+      }else{
+        x1=a.right-gb.left;y1=a.top-gb.top+a.height/2;
+        x2=bLeft;y2=b.top-gb.top+b.height/2;
+        const channel=(x1+x2)/2,r=Math.min(24,Math.max(12,(x2-x1)/5)),direction=y2<y1?-1:1;
+        pathData=`M${x1+7} ${y1} H${channel-r} Q${channel} ${y1} ${channel} ${y1+direction*r} V${y2-direction*r} Q${channel} ${y2} ${channel+r} ${y2} H${x2-7}`;
+        verticalArrow={x:channel,y:y1+(y2-y1)*.48,up:y2<y1};
+      }
+      const path=document.createElementNS(NS,'path');
+      path.setAttribute('d',pathData);
+      if(sameCol)path.setAttribute('marker-end','url(#epLinkArrow)');
+      svg.appendChild(path);
+      addAnchor(x1,y1);
+      if(!sameCol){
+        addAnchor(x2,y2);
+        const arrow=document.createElementNS(NS,'path'),{x,y,up}=verticalArrow;
+        arrow.setAttribute('class','ep-link-cross-arrow');
+        arrow.setAttribute('d',up?`M${x} ${y-10} L${x-7} ${y+8} L${x+7} ${y+8} Z`:`M${x} ${y+10} L${x-7} ${y-8} L${x+7} ${y-8} Z`);
+        svg.appendChild(arrow);
+      }
+    });
+    groups.appendChild(svg);
+  }
+  function schedulePreviewLinks(){cancelAnimationFrame(previewLinkFrame);previewLinkFrame=requestAnimationFrame(drawPreviewLinks)}
+  function observePreviewLinks(){previewLinkObserver?.disconnect();if(!previewDrawer||typeof ResizeObserver==='undefined')return;previewLinkObserver=new ResizeObserver(schedulePreviewLinks);const groups=previewDrawer.querySelector('.ep-mind-groups');if(groups){previewLinkObserver.observe(groups);groups.querySelectorAll('.ep-mind-node').forEach(node=>previewLinkObserver.observe(node))}}
+  window.addEventListener('resize',()=>{if(previewDrawer)schedulePreviewLinks()});
   function lockPreviewPage(){previewScrollY=window.scrollY;document.body.style.top=`-${previewScrollY}px`;document.body.classList.add('ep-preview-open')}
   function unlockPreviewPage(){document.body.classList.remove('ep-preview-open');document.body.style.top='';window.scrollTo(0,previewScrollY)}
-  function openPreviewDrawer(){if(previewDrawer||previewClosing)return;const childCount=state.steps.reduce((n,s)=>n+s.children.length,0),shell=document.createElement('div');shell.className='ep-preview-shell';shell.innerHTML=`<div class="ep-preview-mask" data-preview-close></div><aside class="ep-preview-drawer" role="dialog" aria-modal="true" aria-labelledby="epPreviewTitle"><header class="ep-preview-hero"><img class="ep-preview-hero-art" src="assets/figma/full-process-shield.png" alt=""><div class="ep-preview-heading"><div class="ep-preview-title-row"><h2 id="epPreviewTitle"><span>设备故障-</span><em>应急响应</em><span>-全流程</span></h2><span class="ep-preview-time"><i>◷</i>累计时间：<b data-preview-total>${Math.floor(state.totalSeconds/60)}分</b></span></div><p>${state.steps.length} 个流程节点 · ${childCount} 个处置子项</p></div><button data-preview-close aria-label="关闭全流程预览">×</button></header><div class="ep-preview-body"><div data-preview-canvas>${previewTreeMarkup()}</div></div></aside>`;document.body.appendChild(shell);previewDrawer=shell;lockPreviewPage();requestAnimationFrame(()=>shell.classList.add('open'))}
-  function closePreviewDrawer(immediate=false){if(!previewDrawer||previewClosing)return;previewClosing=true;const shell=previewDrawer;shell.classList.remove('open');const done=()=>{shell.remove();if(previewDrawer===shell)previewDrawer=null;previewClosing=false;unlockPreviewPage()};if(immediate)done();else setTimeout(done,260)}
+  function openPreviewDrawer(){if(previewDrawer||previewClosing)return;const childCount=state.steps.reduce((n,s)=>n+s.children.length,0),shell=document.createElement('div');shell.className='ep-preview-shell';shell.innerHTML=`<div class="ep-preview-mask" data-preview-close></div><aside class="ep-preview-drawer" role="dialog" aria-modal="true" aria-labelledby="epPreviewTitle"><header class="ep-preview-hero"><img class="ep-preview-hero-art" src="assets/figma/full-process-shield.png" alt=""><div class="ep-preview-heading"><div class="ep-preview-title-row"><h2 id="epPreviewTitle"><span>设备故障-</span><em>应急响应</em><span>-全流程</span></h2><span class="ep-preview-time"><i>◷</i>累计时间：<b data-preview-total>${Math.floor(state.totalSeconds/60)}分</b></span></div><p>${state.steps.length} 个流程节点 · ${childCount} 个处置子项</p></div><button data-preview-close aria-label="关闭全流程预览">×</button></header><div class="ep-preview-body"><div data-preview-canvas>${previewTreeMarkup()}</div></div></aside>`;document.body.appendChild(shell);previewDrawer=shell;lockPreviewPage();requestAnimationFrame(()=>{shell.classList.add('open');observePreviewLinks();schedulePreviewLinks()});setTimeout(schedulePreviewLinks,350)}
+  function closePreviewDrawer(immediate=false){if(!previewDrawer||previewClosing)return;previewClosing=true;previewLinkObserver?.disconnect();previewLinkObserver=null;cancelAnimationFrame(previewLinkFrame);const shell=previewDrawer;shell.classList.remove('open');const done=()=>{shell.remove();if(previewDrawer===shell)previewDrawer=null;previewClosing=false;unlockPreviewPage()};if(immediate)done();else setTimeout(done,260)}
   function flowMarkup(){return `<aside class="ep-flow ${state.mode==='preview'?'ep-preview':''}" aria-label="应急响应步骤">${state.mode==='preview'?previewCards():defaultCards()}</aside>`}
   function toolbar(){const selected=sessionStorage.getItem('emergency-fault')||'成都站信号机故障20261006121212',faults=['成都站信号机故障20261006121212','成都站道岔故障20261006101010','成都站轨道电路故障20261006090909'];return `<header class="ep-toolbar"><h2>设备故障应急响应流程</h2><span class="ep-countdown"><i class="ep-clock">◷</i><span>累计时间：<b data-total-time>${Math.floor(state.totalSeconds/60)}分</b></span></span><div class="ep-view-switch" role="group" aria-label="阅览模式"><button data-view-mode="preview" aria-haspopup="dialog">全流程预览</button><button data-view-mode="default" class="active">默认视图</button></div><div class="ep-toolbar-actions"><label>应急故障 <select id="epFault">${faults.map(fault=>`<option ${fault===selected?'selected':''}>${fault}</option>`).join('')}</select></label><button class="ep-material">应急资料调用</button></div></header>`}
   function view(){clearInterval(timer);state=makeState();const station=sessionStorage.getItem('emergency-station')||'安岳';setTimeout(startTimer,0);return `<div class="emergency-process-page"><nav class="ep-breadcrumb"><button class="ep-back">返回</button><span>/</span><b>故障一点通详情</b></nav><section class="ep-workspace">${toolbar()}<div class="ep-content"><div data-jump-host>${jumpRail()}</div><div data-flow-host>${flowMarkup()}</div><section class="ep-map-card"><img src="assets/panorama-screen/map-stations-v2.png" alt="成渝中线应急处置线路图"><div class="ep-map-caption"><b>${station}</b><span>当前应急处置车站</span></div></section></div></section></div>`}

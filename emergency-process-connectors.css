@@ -1,0 +1,9 @@
+/* Figma 378:10584 — 全流程卡片连接线 */
+.ep-preview-shell .ep-mind-groups{isolation:isolate}
+.ep-preview-shell .ep-mind-links{position:absolute;inset:0;z-index:0;display:block;pointer-events:none;overflow:visible}
+.ep-preview-shell .ep-mind-group{position:relative;z-index:2}
+.ep-preview-shell .ep-mind-node{position:relative;z-index:2}
+.ep-preview-shell .ep-mind-links path:not(.ep-link-cross-arrow){fill:none;stroke:#bfc1c4;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.ep-preview-shell .ep-mind-links .ep-link-anchor{fill:#fff;stroke:#c8c8c8;stroke-width:1.5;opacity:1}
+.ep-preview-shell .ep-mind-links .ep-link-cross-arrow{fill:#bfc1c4;stroke:none;opacity:.9}
+.ep-preview-shell .ep-mind-links .ep-link-marker{fill:#bfc1c4;stroke:none;opacity:.9}

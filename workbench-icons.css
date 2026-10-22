@@ -1,0 +1,11 @@
+.wb-shortcut-grid i:has(img){width:42px;height:42px;border-radius:12px;background:transparent}
+.wb-shortcut-grid i img{display:block;width:42px;height:42px}
+.wb-action-tree-leaf small:has(img){display:grid;place-items:center}
+.wb-action-tree-leaf small img{width:25px;height:25px}
+.wb-selected-action>i:has(img){background:transparent}
+.wb-selected-action>i img{width:30px;height:30px}
+.wb-shortcut-grid>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;height:86px;padding:9px;text-align:center}
+.wb-shortcut-grid>button i,.wb-shortcut-grid>button i:has(img){flex:0 0 auto;margin:0}
+.wb-shortcut-grid>button span{display:block;width:100%;overflow:hidden;color:#2c3e52;font-size:13px;line-height:18px;text-align:center;text-overflow:ellipsis;white-space:nowrap}
+.wb-shortcut-grid>button small{display:none}
+.wb-shortcut-grid{max-height:90px}

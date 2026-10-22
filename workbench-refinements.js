@@ -67,8 +67,12 @@
         <div class="wb-fault-legend"><span><i class="yellow"></i>安全信息 <b>9</b></span><span><i class="orange"></i>故障 <b>7</b></span><span><i class="red"></i>事故 <b>2</b></span></div>
       </div>`;
       const rateCard = management.querySelector('.wb-stat-card:nth-child(2)');
-      if (rateCard) rateCard.innerHTML = `<header><span>报警率</span></header>
+      if (rateCard) rateCard.innerHTML = `<header><span>报警率</span><em class="wb-rate-head-tag">实时</em></header>
         <div class="wb-rate-gauge-wrap">
+          <div class="wb-rate-ranks wb-rate-ranks-top" role="list" aria-label="报警率排名">
+            <span role="listitem" class="wb-rank-item"><i class="wb-rank-badge">2</i><span class="wb-rank-label">车间排名</span><b class="wb-rank-value">第2名<small>/共6</small></b></span>
+            <span role="listitem" class="wb-rank-item"><i class="wb-rank-badge">5</i><span class="wb-rank-label">段排名</span><b class="wb-rank-value">第5名<small>/共18</small></b></span>
+          </div>
           <div class="wb-rate-gauge" role="img" aria-label="当前报警率5.2%，目标值不高于6%">
             <span class="wb-gauge-label wb-gauge-label-low">正常</span>
             <span class="wb-gauge-label wb-gauge-label-watch">关注</span>
@@ -82,10 +86,6 @@
               <circle class="wb-gauge-marker" cx="126" cy="34" r="8"/>
             </svg>
             <div class="wb-gauge-value"><strong>5.2<small>%</small></strong><span>当前报警率</span></div>
-          </div>
-          <div class="wb-rate-ranks" role="list" aria-label="报警率排名">
-            <span role="listitem"><i class="wb-rank-badge">2</i>车间排名<b>2</b><small>/6</small></span>
-            <span role="listitem"><i class="wb-rank-badge">5</i>段排名<b>5</b><small>/18</small></span>
           </div>
         </div>`;
       const planCard = management.querySelector('.wb-stat-card:nth-child(3)');

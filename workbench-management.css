@@ -22,7 +22,14 @@
 .wb-business-alarm-row .wb-management-grid .wb-spark{flex:1;min-height:122px;height:auto;margin-top:12px}
 .wb-business-alarm-row .wb-management-grid .wb-progress-line{margin-top:28px}
 .wb-business-alarm-row .wb-management-grid .wb-progress-line+.wb-progress-line{margin-top:34px}
-.wb-rate-gauge-wrap{display:flex;flex:1;min-height:0;flex-direction:column;justify-content:space-between;align-items:stretch;padding-top:8px}
+.wb-rate-gauge-wrap{display:flex;flex:1;min-height:0;flex-direction:column;justify-content:flex-start;align-items:stretch;padding-top:8px;gap:12px}
+.wb-rate-head-tag{margin-left:auto;font-style:normal;font-size:12px;color:#18a06a;background:#e7f8ef;padding:2px 9px;border-radius:10px}
+.wb-rate-ranks-top{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 12px;border-bottom:1px solid #edf1f5}
+.wb-rate-ranks-top .wb-rank-item{display:flex;flex-direction:column;align-items:center;gap:6px;background:linear-gradient(180deg,#f3f9ff,#e9f3ff);border:1px solid #d6e7fb;border-radius:10px;padding:12px 6px}
+.wb-rate-ranks-top .wb-rank-badge{width:26px;height:26px;font-size:13px;background:#168bff;color:#fff}
+.wb-rate-ranks-top .wb-rank-label{color:#5b6b7e;font-size:12.5px}
+.wb-rate-ranks-top .wb-rank-value{color:#168bff;font-size:17px;font-weight:700;line-height:1}
+.wb-rate-ranks-top .wb-rank-value small{color:#93a1b1;font-size:12px;font-weight:500;margin-left:2px}
 .wb-rate-gauge{position:relative;width:100%;max-width:248px;min-height:172px;margin:auto;color:#75869a}
 .wb-rate-ranks{display:flex;align-items:stretch;gap:10px;padding:10px 0 2px;border-top:1px solid #edf1f5}
 .wb-rate-ranks span{flex:1;display:flex;min-width:0;align-items:center;justify-content:center;gap:5px;color:#596d83;font-size:12.5px;white-space:nowrap}

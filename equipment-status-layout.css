@@ -13,3 +13,21 @@
 .es-statistics .es-charts{margin-top:0}
 .es-table-card{margin-top:0}
 @media(max-width:1350px){.es-filter{padding-right:84px}.es-filter-controls{max-height:30px}}
+/* 设备状态：得分趋势与维修预警统计左右各占1/2 */
+.es-charts{display:grid;grid-template-columns:1fr;gap:16px}
+.es-charts-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.es-charts-pair .es-trend{grid-column:auto}
+.es-charts-pair>article{background:#fff}
+.es-health-block{background:#fff}
+@media(max-width:1100px){.es-charts-pair{grid-template-columns:1fr}}
+/* 各类型设备健康状态统计：4类型横向一行各1/4 */
+.es-health-pies{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.es-health-pie{display:flex;flex-direction:column;align-items:center;gap:10px;background:#f8fbff;border:1px solid #eef3f8;border-radius:8px;padding:14px 8px}
+.es-health-pie svg{width:96px;height:96px;flex:none}
+.hp-num{text-anchor:middle;font-size:17px;font-weight:700;fill:#26384c}
+.hp-sub{text-anchor:middle;font-size:7.5px;fill:#8a96a6}
+.hp-title{align-self:flex-start;font-size:15px;color:#26384c}
+.es-health-legend{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 12px}
+.es-health-legend span{display:flex;align-items:center;gap:6px;font-size:13px;color:#5b6b7e;line-height:1.9}
+.es-health-legend i{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+@media(max-width:1100px){.es-health-pies{grid-template-columns:repeat(2,1fr)}}

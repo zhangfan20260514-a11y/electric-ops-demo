@@ -103,10 +103,41 @@
     return `<div class="oa-tree-title"><h2>组织机构</h2><span>最小单位：工区</span></div><ul class="oa-tree">${node(byId.bureau)}</ul>`;
   }
 
+  function radarChart(org,d){
+    const axes=[
+      {label:'安全效果',key:'safety',x:160,y:31,lx:160,ly:15,anchor:'middle'},
+      {label:'生产组织',key:'production',x:251,y:122,lx:308,ly:126,anchor:'end'},
+      {label:'人员评价',key:'staff',x:160,y:213,lx:160,ly:252,anchor:'middle'},
+      {label:'设备质量',key:'device',x:69,y:122,lx:12,ly:126,anchor:'start'}
+    ];
+    const center={x:160,y:122},radius=91;
+    const point=(axis,scale)=>`${center.x+(axis.x-center.x)*scale},${center.y+(axis.y-center.y)*scale}`;
+    const grids=[.2,.4,.6,.8,1].map(scale=>`<polygon points="${axes.map(axis=>point(axis,scale)).join(' ')}"/>`).join('');
+    const axesLines=axes.map(axis=>`<line x1="${center.x}" y1="${center.y}" x2="${axis.x}" y2="${axis.y}"/>`).join('');
+    const dataPoints=axes.map(axis=>point(axis,Math.max(0,Math.min(100,d[axis.key]))/100)).join(' ');
+    const vertices=axes.map(axis=>{
+      const [x,y]=point(axis,Math.max(0,Math.min(100,d[axis.key]))/100).split(',');
+      const value=d[axis.key].toFixed(1),tip=`${axis.label}：${value}分 / 100分`;
+      return `<circle class="oa-radar-point" cx="${x}" cy="${y}" r="5" tabindex="0" role="img" aria-label="${tip}" data-radar-tip="${tip}"><title>${tip}</title></circle>`;
+    }).join('');
+    const labels=axes.map(axis=>`<text class="oa-radar-label" x="${axis.lx}" y="${axis.ly}" text-anchor="${axis.anchor}">${axis.label}</text>`).join('');
+    return `<div class="oa-radar-wrap"><svg class="oa-radar" viewBox="0 0 320 260" role="img" aria-label="${org.name}四维评价雷达图"><g class="oa-radar-grid">${grids}</g><g class="oa-radar-axes">${axesLines}</g><polygon class="oa-radar-area" points="${dataPoints}"/>${vertices}<circle class="oa-radar-center" cx="${center.x}" cy="${center.y}" r="3"/><circle class="oa-radar-score-bg" cx="${center.x}" cy="${center.y}" r="25"/><text class="oa-radar-score" x="${center.x}" y="${center.y-1}" text-anchor="middle">${d.total.toFixed(1)}</text><text class="oa-radar-unit" x="${center.x}" y="${center.y+15}" text-anchor="middle">分</text>${labels}</svg><div class="oa-radar-tooltip" role="status" hidden></div></div>`;
+  }
+
+  let radarObserver;
+  function observeRadar(root){
+    if(radarObserver)radarObserver.disconnect();
+    if(!root||typeof ResizeObserver==='undefined')return;
+    radarObserver=new ResizeObserver(entries=>entries.forEach(({target,contentRect})=>{
+      target.style.setProperty('--oa-radar-height',`${Math.max(205,Math.min(252,contentRect.width*.82))}px`);
+    }));
+    root.querySelectorAll('.oa-total-card').forEach(card=>radarObserver.observe(card));
+  }
+
   function statCards(){
     const org=byId[state.org],d=dimsOf(org),ranks=rankingOf(org);
     const dimRows=[['安全效果','safety'],['生产组织','production'],['人员评价','staff'],['设备质量','device']].map(([label,key])=>`<li><span>${label}</span><b style="--v:${d[key]}%">${d[key].toFixed(1)}</b><i><em style="width:${d[key]}%"></em></i></li>`).join('');
-    return `<article class="oa-total-card"><span>综合得分</span><strong>${d.total.toFixed(1)}</strong><div class="oa-ranks">${ranks.map(r=>`<p><em>${r.label}</em><b>${r.value}</b></p>`).join('')}</div><small>${org.kind} · ${org.name} · 责任人 ${org.leader}</small></article><article class="oa-dim-card"><header><h3>四维得分</h3><span>${org.name}</span></header><ul>${dimRows}</ul></article>`;
+    return `<article class="oa-total-card"><header class="oa-radar-title"><span>综合得分</span><strong>${d.total.toFixed(1)}分</strong></header>${radarChart(org,d)}<div class="oa-total-meta"><div class="oa-ranks">${ranks.map(r=>`<p><em>${r.label}</em><b>${r.value}</b></p>`).join('')}</div><small>${org.kind} · ${org.name} · 责任人 ${org.leader}</small></div></article><article class="oa-dim-card"><header><h3>四维得分</h3><span>${org.name}</span></header><ul>${dimRows}</ul></article>`;
   }
 
   function trendChart(){
@@ -126,7 +157,7 @@
 
   const range=(id,label)=>`<span class="oa-range"><em>${label}</em><input id="${id}Min" type="number" placeholder="最低分"><i>—</i><input id="${id}Max" type="number" placeholder="最高分"></span>`;
   function page(){
-    requestAnimationFrame(()=>{render();updateFilterToggle(document.querySelector('.oa-page'))});
+    requestAnimationFrame(()=>{render();const root=document.querySelector('.oa-page');updateFilterToggle(root);observeRadar(root)});
     return `<div class="oa-page"><aside class="oa-tree-panel">${tree()}</aside><section class="oa-main"><header class="oa-heading"><div><h1>机构评估</h1><p>按组织机构综合评价安全、生产、人员与设备四维表现</p></div><span>数据更新：2026-10-20 09:30</span></header><section class="oa-filter"><div class="oa-filter-controls">${range('oaSafety','安全效果')}${range('oaProduction','生产组织')}${range('oaStaff','人员评价')}${range('oaDevice','设备质量')}${range('oaTotal','总分')}</div><div class="oa-filter-actions"><button class="oa-filter-toggle" id="oaFilterToggle" hidden>展开</button><button class="primary-action" id="oaQuery">查询</button><button id="oaReset">重置</button></div></section><section class="oa-statistics" id="oaStats">${statCards()}<article class="oa-trend"><header><h2>近一年综合得分趋势</h2><span id="oaTrendScope">${byId[state.org].name} · 月度综合得分</span></header>${trendChart()}</article></section><section class="oa-table-card"><header><h2 id="oaListTitle">机构评估结果</h2><span id="oaListScope">${SCOPE[byId[state.org].kind]} · 按总分由高到低排序</span></header><div class="oa-table-wrap"><table><thead><tr><th>序号</th><th>部门名称</th><th>责任人</th><th>安全效果得分</th><th>生产组织得分</th><th>人员评价得分</th><th>设备质量得分</th><th>总分</th><th>操作</th></tr></thead><tbody id="oaRows">${rows()}</tbody></table></div><footer id="oaPager">${pager()}</footer></section></section></div>`;
   }
   function updateFilterToggle(root){if(!root)return;const box=root.querySelector('.oa-filter-controls'),btn=root.querySelector('#oaFilterToggle');if(!box||!btn)return;btn.hidden=box.classList.contains('expanded')||!(box.scrollHeight>box.clientHeight+2)}
@@ -138,6 +169,7 @@
     root.querySelector('#oaPager').innerHTML=pager();
     root.querySelector('#oaStats').innerHTML=`${statCards()}<article class="oa-trend"><header><h2>近一年综合得分趋势</h2><span id="oaTrendScope">${org.name} · 月度综合得分</span></header>${trendChart()}</article>`;
     root.querySelector('#oaListScope').textContent=`${SCOPE[org.kind]} · 按总分由高到低排序`;
+    observeRadar(root);
   }
   function readRanges(root){
     ['Safety','Production','Staff','Device','Total'].forEach(k=>{
@@ -173,6 +205,23 @@
     const pg=e.target.closest('[data-oa-page]');
     if(pg&&!pg.disabled){state.page=+pg.dataset.oaPage;render()}
   });
+  function positionRadarTooltip(point,event){
+    const wrap=point.closest('.oa-radar-wrap'),tip=wrap&&wrap.querySelector('.oa-radar-tooltip');
+    if(!wrap||!tip)return;
+    tip.textContent=point.dataset.radarTip;tip.hidden=false;
+    const wr=wrap.getBoundingClientRect(),pr=point.getBoundingClientRect();
+    const clientX=event&&Number.isFinite(event.clientX)?event.clientX:pr.left+pr.width/2;
+    const clientY=event&&Number.isFinite(event.clientY)?event.clientY:pr.top;
+    const left=Math.max(6,Math.min(clientX-wr.left+10,wr.width-tip.offsetWidth-6));
+    const top=Math.max(6,Math.min(clientY-wr.top-tip.offsetHeight-10,wr.height-tip.offsetHeight-6));
+    tip.style.left=`${left}px`;tip.style.top=`${top}px`;
+  }
+  function hideRadarTooltip(point){const tip=point.closest('.oa-radar-wrap')?.querySelector('.oa-radar-tooltip');if(tip)tip.hidden=true}
+  document.addEventListener('pointerover',e=>{const point=e.target.closest?.('.oa-radar-point');if(point)positionRadarTooltip(point,e)});
+  document.addEventListener('pointermove',e=>{const point=e.target.closest?.('.oa-radar-point');if(point)positionRadarTooltip(point,e)});
+  document.addEventListener('pointerout',e=>{const point=e.target.closest?.('.oa-radar-point');if(point)hideRadarTooltip(point)});
+  document.addEventListener('focusin',e=>{const point=e.target.closest?.('.oa-radar-point');if(point)positionRadarTooltip(point)});
+  document.addEventListener('focusout',e=>{const point=e.target.closest?.('.oa-radar-point');if(point)hideRadarTooltip(point)});
   window.addEventListener('resize',()=>{const root=document.querySelector('.oa-page');if(!root)return;const box=root.querySelector('.oa-filter-controls'),btn=root.querySelector('#oaFilterToggle');if(box&&btn)btn.hidden=!(box.scrollHeight>box.clientHeight+2)});
 
   window.OrgAssessmentData={orgs,dimsOf,trendOf,rankingOf,levelTitle:LEVEL_TITLE};

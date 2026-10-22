@@ -1,0 +1,41 @@
+(function(){
+  const groups=[
+    {title:'常用',items:[
+      {name:'工作台',route:'#/workbench',icon:'台',desc:'个人待办与实时态势'},
+      {name:'智能分析',route:'#/analysis',icon:'析',desc:'多维度智能分析诊断'},
+      {name:'智能助手',route:'#/assistant',icon:'智',desc:'知识库智能问答'}
+    ]},
+    {title:'人员管理',items:[
+      {name:'个人主页',route:'#/person/home',icon:'个',desc:'个人基本信息与作业概览'},
+      {name:'人员信息',route:'#/person/list',icon:'人',desc:'机构人员台账与详情'},
+      {name:'人员统计',route:'#/person/statistics',icon:'统',desc:'人员分布与资质统计'},
+      {name:'包保管理',route:'#/person/responsibility',icon:'包',desc:'包保工区与指标管理'}
+    ]},
+    {title:'设备管理',items:[
+      {name:'设备台账',route:'#/equipment/ledger',icon:'账',desc:'设备全生命周期台账'},
+      {name:'备品台账',route:'#/equipment/spares',icon:'备',desc:'备品备件库存管理'},
+      {name:'问题管控',route:'#/equipment/issues',icon:'问',desc:'设备问题录入与处置'},
+      {name:'设备状态',route:'#/health/equipment-status',icon:'态',desc:'设备健康综合评估'}
+    ]},
+    {title:'作业管理',items:[
+      {name:'工单台账',route:'#/work/orders',icon:'单',desc:'派工单与执行记录'},
+      {name:'工单详情',route:'#/work/orders/detail',icon:'详',desc:'作业方案与风险管控'}
+    ]},
+    {title:'综合评价',items:[
+      {name:'职工素质评估',route:'#/health/quality/staff',icon:'职',desc:'职工能力画像与评分'},
+      {name:'干部素质评估',route:'#/health/quality/manager',icon:'干',desc:'车间干部能力评估'},
+      {name:'机构评估',route:'#/health/org-assessment',icon:'构',desc:'机构健康度综合评估'}
+    ]},
+    {title:'全景应急',items:[
+      {name:'应急管理',route:'#/panorama/emergency',icon:'急',desc:'应急大屏与实时态势'},
+      {name:'故障一点通',route:'#/panorama/emergency/process',icon:'障',desc:'故障响应流程导航'},
+      {name:'应急预案',route:'#/panorama/plans',icon:'案',desc:'预案维护与演练'},
+      {name:'资料库',route:'#/panorama/library',icon:'资',desc:'规章制度与技术资料'},
+      {name:'司机信息',route:'#/panorama/drivers',icon:'司',desc:'司机信息维护'},
+      {name:'出行交通',route:'#/panorama/travel',icon:'行',desc:'出行交通信息维护'}
+    ]}
+  ];
+  function page(){return `<div class="more-page"><header class="more-heading"><div><h1>更多菜单</h1><p>系统全部功能模块的统一入口，点击卡片即可进入对应页面</p></div></header>${groups.map(g=>`<section class="more-group"><h2>${g.title}</h2><div class="more-grid">${g.items.map((it,i)=>`<button class="more-card tone-${i%5}" data-route="${it.route}"><span class="more-icon">${it.icon}</span><div class="more-text"><b>${it.name}</b><small>${it.desc}</small></div><i class="more-arrow">→</i></button>`).join('')}</div></section>`).join('')}</div>`}
+  document.addEventListener('click',e=>{const card=e.target.closest('[data-route]');if(card){location.hash=card.dataset.route}});
+  window.PageViews.more=page;
+})();

@@ -1,3 +1,7 @@
+# 本地 IDE / 缓存数据
+.codebuddy/
 .DS_Store
+
+# 依赖与日志
 node_modules/
 *.log

@@ -1,0 +1,30 @@
+.ass-page{min-height:1000px;display:flex;flex-direction:column}
+.ass-heading{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}
+.ass-heading h1{font-size:22px;margin:0}
+.ass-heading p{color:var(--muted);margin:6px 0 0;font-size:13px}
+.ass-online{color:#18a06a;font-size:13px}
+.ass-body{display:grid;grid-template-columns:280px 1fr;gap:16px;flex:1;min-height:780px}
+.ass-side{background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(16,40,70,.06);padding:18px;display:flex;flex-direction:column}
+.ass-side-banner{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.ass-side-banner img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.ass-side-banner b{display:block;font-size:16px}
+.ass-side-banner small{color:var(--muted);font-size:12px}
+.ass-side h3{font-size:14px;margin:0 0 12px;color:#4b5563}
+.ass-quick{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.ass-quick li{background:#f4f9ff;border:1px solid #e1eefb;color:#1f6fb8;font-size:13px;padding:11px 13px;border-radius:6px;cursor:pointer;transition:.15s;line-height:1.5}
+.ass-quick li:hover{background:#e3f1ff;border-color:#bcdcfb;transform:translateX(2px)}
+.ass-tip{margin-top:auto;color:#9aa7b5;font-size:12px;line-height:1.6;background:#f7f9fb;padding:12px;border-radius:6px}
+.ass-chat{background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(16,40,70,.06);display:flex;flex-direction:column;overflow:hidden}
+.ass-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;background:#f7f9fc}
+.ass-bubble{display:flex;gap:10px;max-width:78%}
+.ass-bubble .ass-avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;flex:none}
+.ass-bubble.ai .ass-avatar{background:#168bf0}
+.ass-bubble.user{flex-direction:row-reverse;align-self:flex-end}
+.ass-bubble.user .ass-avatar{background:#7b61ff}
+.ass-text{background:#fff;border:1px solid var(--line);padding:12px 15px;border-radius:10px;line-height:1.7;font-size:14px;color:#33465a}
+.ass-bubble.user .ass-text{background:#7b61ff;color:#fff;border-color:#7b61ff}
+.ass-input{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line);background:#fff}
+.ass-input input{flex:1;height:42px;border:1px solid #cfd8e3;border-radius:6px;padding:0 14px;font-size:14px}
+.ass-input input:focus{outline:none;border-color:#168bf0;box-shadow:0 0 0 3px rgba(22,139,240,.12)}
+.ass-input button{height:42px;padding:0 26px;background:#168bf0;color:#fff;border:0;border-radius:6px;cursor:pointer;font-size:15px}
+.ass-input button:hover{background:#0e79d8}

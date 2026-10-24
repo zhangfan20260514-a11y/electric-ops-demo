@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="256" height="256" role="img" aria-label="系统检测图标">
+  <!-- 橙色圆角背景 -->
+  <rect x="0" y="0" width="100" height="100" rx="25" fill="#F4740F"/>
+  <!-- 放大镜圆环 -->
+  <circle cx="44" cy="44" r="26" fill="none" stroke="#FFFFFF" stroke-width="8.5"/>
+  <!-- 放大镜手柄 -->
+  <line x1="65" y1="65" x2="82" y2="82" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+  <!-- 齿轮（Lucide settings，实心填充） -->
+  <g transform="translate(44,44) scale(2) translate(-12,-12)">
+    <path fill="#FFFFFF" d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+    <circle cx="12" cy="12" r="2.6" fill="#F4740F"/>
+  </g>
+</svg>

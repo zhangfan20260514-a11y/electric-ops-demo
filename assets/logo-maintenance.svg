@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 270" role="img" aria-label="电务设备智能维护管理系统">
+  <defs>
+    <linearGradient id="tg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".45" stop-color="#eaf6ff"/>
+      <stop offset=".78" stop-color="#a8d2f8"/>
+      <stop offset="1" stop-color="#6fb0ee"/>
+    </linearGradient>
+    <filter id="glow1" x="-15%" y="-40%" width="130%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b"/>
+      <feFlood flood-color="#2b8cff" flood-opacity=".6"/>
+      <feComposite in2="b" operator="in" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 左右速度斜杠 -->
+  <g fill="#e8f4ff" transform="translate(620,135) skewX(-10) translate(-620,-135)">
+    <rect x="48" y="62" width="52" height="15" rx="7.5"/>
+    <rect x="24" y="96" width="34" height="13" rx="6.5"/>
+    <rect x="1140" y="62" width="52" height="15" rx="7.5"/>
+    <rect x="1158" y="96" width="34" height="13" rx="6.5"/>
+  </g>
+
+  <!-- 主标题：先深蓝厚度层，再渐变描边发光层 -->
+  <g font-family="'Alibaba PuHuiTi 3.0','Alibaba PuHuiTi','PingFang SC','Microsoft YaHei',sans-serif"
+     font-weight="900" font-size="126" text-anchor="middle"
+     transform="translate(620,140) skewX(-8) translate(-620,-140)">
+    <text x="620" y="168" fill="#0a3a80" textLength="1050" lengthAdjust="spacingAndGlyphs"
+      transform="translate(6,9)">电务设备智能维护管理系统</text>
+    <text x="620" y="168" fill="url(#tg1)" stroke="#1e6fd0" stroke-width="5"
+      paint-order="stroke" stroke-linejoin="round" filter="url(#glow1)"
+      textLength="1050" lengthAdjust="spacingAndGlyphs">电务设备智能维护管理系统</text>
+  </g>
+
+  <!-- 底部弧形能量线 -->
+  <path d="M170 218 Q 620 248 1070 218" fill="none" stroke="#2f8df0" stroke-width="10" stroke-linecap="round" opacity=".9"/>
+  <path d="M250 236 Q 620 258 990 236" fill="none" stroke="#7cc0ff" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+</svg>

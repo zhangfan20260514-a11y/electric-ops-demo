@@ -1,5 +1,8 @@
-/* 机构评估：检索条件默认一行，超出收起；点击展开显示全部 */
+/* 机构评估：检索条件固定单行展示 */
 .oa-page{align-items:stretch}
 .oa-tree-panel{position:relative;top:auto;height:auto;align-self:stretch}
-.oa-filter-controls{max-height:32px;overflow:hidden}
-.oa-filter-controls.expanded{max-height:none;overflow:visible}
+.oa-filter{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.oa-filter-controls{flex:1;min-width:0;display:flex;flex-wrap:nowrap;gap:8px;max-height:none;overflow:visible}
+.oa-range{flex:1 1 0;min-width:0}
+.oa-range input{flex:1;min-width:0;width:auto}
+.oa-filter-actions{margin-top:0;flex:none}

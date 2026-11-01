@@ -299,6 +299,132 @@ body.sidebar-collapsed main {
 .emergency-modal form{padding:22px 28px 0}.emergency-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}.emergency-form-grid label{display:grid;grid-template-columns:76px 1fr;align-items:center;position:relative;margin:0}.emergency-form-grid label>span:first-child{font-size:14px;color:#303b49}.emergency-form-grid select,.emergency-form-grid textarea{width:100%;border:1px solid #d9d9d9;border-radius:2px;background:#fff;color:#87919d;padding:0 12px}.emergency-form-grid select{height:34px}.emergency-form-grid label.full{grid-column:1/3;align-items:start}.emergency-form-grid textarea{height:64px;padding-top:8px;resize:none}.emergency-form-grid label.full small{position:absolute;right:8px;bottom:6px;color:#b5bbc3;font-size:11px}.emergency-form-grid label.full small i{font-style:normal}
 .upload-box{height:112px;border:1px solid #d9d9d9;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#627080}.upload-box input{position:absolute;inset:0;opacity:0;cursor:pointer}.upload-box b{font-size:14px;font-weight:400;margin-top:7px}.upload-box em{font-style:normal;font-size:11px;color:#9aa3ae;margin-top:4px}.upload-box.has-file{border-color:#1890ff;background:#f5faff}.upload-icon{width:22px;height:18px;border:2px solid #1890ff;border-radius:2px;position:relative}.upload-icon:before{content:"";position:absolute;width:8px;height:4px;border:2px solid #1890ff;border-bottom:0;left:5px;top:-7px;border-radius:3px 3px 0 0}
 .emergency-modal footer{height:58px;margin:22px -28px 0;padding:12px 22px;border-top:1px solid #edf0f4;display:flex;justify-content:flex-end;gap:10px}.emergency-modal footer button{height:32px;padding:0 18px;border:1px solid #d9d9d9;background:#fff;cursor:pointer}.emergency-modal footer .primary-action{background:#168bf0;color:#fff;border-color:#168bf0}
+/* 包保管理：新建弹窗 */
+.resp-modal-mask{display:none;position:fixed;inset:0;background:rgba(15,35,60,.45);z-index:120;align-items:center;justify-content:center}
+.resp-modal-mask.show{display:flex}
+.resp-modal{width:420px;background:#fff;border-radius:8px;box-shadow:0 12px 40px rgba(16,42,74,.2);animation:modal-in .18s ease-out}
+.resp-modal>header{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #edf1f5}.resp-modal>header b{font-size:15px;color:#20344b}.resp-modal>header button{border:0;background:none;font-size:22px;color:#8a96a6;cursor:pointer;line-height:1}
+.resp-form{display:flex;flex-direction:column;gap:14px;padding:20px 18px}.resp-form label{display:grid;grid-template-columns:76px 1fr;align-items:center;font-size:13px;color:#3c4d61}.resp-form input,.resp-form select{height:34px;border:1px solid #ccd6e0;border-radius:3px;padding:0 10px;font-size:13px;color:#20344b;background:#fff}.resp-form input:focus,.resp-form select:focus{outline:none;border-color:#168bf0}
+.resp-form label span i{font-style:normal;color:#ef5350;margin-left:2px}
+.resp-error{font-size:12px;color:#ef5350;min-height:16px;margin:0;padding-left:88px}
+.resp-modal>footer{display:flex;justify-content:flex-end;gap:10px;padding:14px 18px;border-top:1px solid #eef2f7}.resp-modal>footer button{height:32px;padding:0 18px;border:1px solid #d9d9d9;background:#fff;border-radius:3px;cursor:pointer;font-size:13px}.resp-modal>footer .primary-action{background:#168bf0;color:#fff;border-color:#168bf0}
+/* 设备状态页：Tab 切换栏（加大突出） */
+.es-tabs{display:flex;gap:6px;padding:3px;background:#f1f4f8;border:1px solid #e4eaf1;border-radius:8px;margin-bottom:16px;width:fit-content}
+.es-tab{height:40px;padding:0 28px;border:1px solid transparent;background:transparent;color:#4a5a6e;font-size:15px;cursor:pointer;border-radius:6px;font-weight:500}
+.es-tab:hover{color:#168bf0;background:#fff}
+.es-tab.active{background:#168bf0;border-color:#168bf0;color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(22,139,240,.35)}
+/* 设备状态页：维修预警红底、维修建议三色 */
+.es-warning.yes{display:inline-block;background:#ef5350;color:#fff;border-radius:2px;padding:4px 11px;font-weight:700}
+.es-advice{font-size:12px;line-height:1.5;white-space:normal}
+.es-advice.good{color:#13b980}.es-advice.warn{color:#168bf0}.es-advice.bad{color:#ef5350}
+.es-table-card td.es-advice-cell{white-space:normal;max-width:220px}
+/* 设备状态页：专项表格链接数字与详情弹窗 */
+.es-table-card table.es-wide{min-width:2000px}
+.es-link{border:0;background:none;color:#0879f9;cursor:pointer;font-weight:700;font-size:14px}
+.es-link.zero{color:#97a3b1;cursor:default}
+.es-modal-mask{display:none;position:fixed;inset:0;background:rgba(15,35,60,.45);z-index:130;align-items:center;justify-content:center}
+.es-modal-mask.show{display:flex}
+.es-modal{width:640px;max-width:92vw;background:#fff;border-radius:8px;box-shadow:0 12px 40px rgba(16,42,74,.2);max-height:80vh;display:flex;flex-direction:column;animation:modal-in .18s ease-out}
+.es-modal>header{height:52px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #edf1f5}.es-modal>header b{font-size:15px;color:#20344b}.es-modal>header button{border:0;background:none;font-size:22px;color:#8a96a6;cursor:pointer;line-height:1}
+.es-modal-body{padding:16px 18px;overflow:auto}
+.es-modal-body h3{font-size:14px;margin:0 0 10px;color:#20344b}
+.es-modal-table{width:100%;border-collapse:collapse}
+.es-modal-table th,.es-modal-table td{padding:9px 10px;font-size:13px;border-bottom:1px solid #eef2f6;text-align:left;white-space:nowrap}
+.es-modal-table th{color:#7b8794;font-weight:600;background:#f7f9fb}
+.es-modal-empty{margin:0;padding:24px 0;text-align:center;color:#97a3b1;font-size:13px}
+.es-problem-status{display:inline-block;padding:3px 9px;border-radius:2px;color:#fff;font-size:12px}
+.es-problem-status.s-bad{background:#ef5350}.es-problem-status.s-warn{background:#168bf0}.es-problem-status.s-good{background:#24b47e}
+.es-detail-info{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-bottom:16px}
+.es-detail-info p{margin:0;font-size:13px;display:flex;gap:10px;align-items:center}
+.es-detail-info p span{color:#7b8794;min-width:110px}
+.es-detail-basic{grid-template-columns:repeat(3,minmax(0,1fr));background:#f7fafd;border:1px solid #e4eaf1;border-radius:8px;padding:12px 16px}
+.es-detail-info .es-health{color:#fff!important;font-weight:500}
+.es-detail-basic p span{min-width:auto}
+.es-detail-basic p b{font-weight:600}
+/* 设备状态页：维修告警详情双时间轴 */
+.es-modal.wide{width:860px}
+.es-tl-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.es-tl-col h3{font-size:14px;margin:0 0 12px;color:#20344b}
+.es-timeline{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid #e4eaf1;display:flex;flex-direction:column;gap:14px}
+.es-timeline li{position:relative;display:flex;gap:10px;align-items:flex-start}
+.es-timeline li i{position:absolute;left:-23px;top:14px;width:8px;height:8px;border-radius:50%;background:#c3ccd6}
+.es-timeline.alarm li i{background:#ef5350}
+.es-timeline.repair li i{background:#13b980}
+.es-timeline li.es-tl-empty{display:block;color:#8a96a6;font-size:12.5px;padding:4px 0}
+.es-timeline b{flex:0 0 76px;font-size:12px;color:#5d6d80;font-weight:600;padding-top:12px;line-height:1.4}
+.es-timeline .es-card{flex:1;min-width:0;background:#f8fafc;border:1px solid #e4eaf1;border-radius:8px;padding:9px 12px}
+.es-timeline.alarm .es-card{background:#fff5f5;border-color:#f3d2d2}
+.es-timeline.repair .es-card{background:#f2fbf7;border-color:#cfe9de}
+.es-timeline p{margin:0;font-size:13px;color:#20344b;line-height:1.5}
+.es-timeline p small{display:block;color:#8a96a6;font-size:12px;margin-top:3px}
+.es-tl-empty{color:#97a3b1;font-size:13px;list-style:none}
+.es-modal-footer{display:flex;justify-content:flex-end;padding-top:14px;margin-top:16px;border-top:1px solid #eef2f7}
+.es-modal-footer .primary-action{height:32px;padding:0 22px;border:1px solid #168bf0;border-radius:3px;cursor:pointer;font-size:13px}
+/* 设备状态页：专项汇总评分红黑榜 */
+.es-score-inline h2,.es-rank h2{font-size:15px;margin:0 0 14px;color:#20344b;font-weight:700}
+.es-rank table{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse}
+.es-modal-table{min-width:0}
+.es-rank th,.es-rank td{padding:9px 10px;font-size:13px;letter-spacing:.5px;border-bottom:1px solid #eef2f6;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.es-rank th{color:#7b8794;font-weight:600;background:#f7f9fc}
+.es-rank td.es-action{position:static;box-shadow:none}
+.es-rank .es-rank-btn{border:0;background:none;color:#0879f9;cursor:pointer;font-size:12px;white-space:nowrap;padding:0}
+.es-rank td:last-child,.es-rank th:last-child{position:static!important;background:#fff}
+/* 设备管理-台账子菜单：设备核对弹框 */
+.sl-cmp-shell{position:fixed;inset:0;z-index:130;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.sl-cmp-shell.open{opacity:1;pointer-events:auto}
+.sl-cmp-mask{position:absolute;inset:0;background:rgba(15,29,46,.55)}
+.sl-cmp-dialog{position:relative;width:min(1080px,calc(100vw - 48px));max-height:86vh;background:#fff;border-radius:10px;box-shadow:0 24px 64px rgba(15,29,46,.28);display:flex;flex-direction:column;transform:translateY(12px);transition:transform .2s}
+.sl-cmp-shell.open .sl-cmp-dialog{transform:translateY(0)}
+.sl-cmp-dialog>header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #e8edf3}
+.sl-cmp-dialog>header b{font-size:16px;color:#1d3247}
+.sl-cmp-dialog>header button{border:0;background:none;font-size:20px;color:#7b8794;cursor:pointer;line-height:1}
+.sl-cmp-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;padding:18px 22px;overflow:auto}
+.sl-cmp-col h3{margin:0 0 10px;font-size:14px;color:#20344b;display:flex;align-items:center;justify-content:space-between}
+.sl-cmp-col h3 em{font-style:normal;font-size:12px;color:#e8890c;background:#fff4e3;border-radius:10px;padding:2px 10px}
+.sl-cmp-col table{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse}
+.sl-cmp-col th,.sl-cmp-col td{padding:8px 10px;font-size:12.5px;border-bottom:1px solid #eef2f6;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sl-cmp-col th{background:#f7f9fc;color:#7b8794;font-weight:600}
+.sl-cmp-col tr.sl-cmp-diff td{background:#fff7e8}
+.sl-cmp-ok{color:#13b980;font-size:12px}
+.sl-cmp-bad{color:#e8890c;font-size:12px}
+.sl-cmp-dialog>footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 22px;border-top:1px solid #e8edf3}
+.sl-cmp-note{font-size:12px;color:#8a96a6}
+.sl-cmp-dialog>footer .primary-action{height:32px;padding:0 22px}
+/* 台账子菜单详情抽屉字段排布 */
+.sl-detail-list{grid-template-columns:130px minmax(0,1fr) 130px minmax(0,1fr)}
+.sl-detail-list span{background:#f5f8fb}
+/* 台账筛选行紧凑：查询/重置与筛选同行 */
+.standard-page .el-filter{row-gap:8px}
+.standard-page .el-filter label{margin-right:6px;gap:5px}
+.standard-page .el-filter label span{white-space:nowrap}
+.standard-page .el-filter select{min-width:82px;padding-left:8px;padding-right:20px}
+.standard-page .el-filter .el-keyword input{width:118px}
+.standard-page .el-filter button{height:32px;padding:0 14px;white-space:nowrap}
+/* 筛选区：流式筛选(超出折叠) + 右侧固定查询/重置；设备核对独立行左对齐 */
+.sl-filterbar{display:flex;align-items:center;gap:12px}
+.sl-filter-items{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;gap:8px 14px;max-height:34px;overflow:hidden;transition:max-height .2s}
+.sl-filter-items.expanded{max-height:320px}
+.sl-expand-btn{flex:0 0 auto;border:0;background:none;color:#0879f9;font-size:13px;cursor:pointer;white-space:nowrap;padding:0 2px}
+.sl-filter-btns{flex:0 0 auto;display:flex;gap:8px;margin-left:auto}
+.sl-action-row{display:flex;align-items:center;margin:12px 0 0}
+/* 台账详情居中弹框 */
+.sl-detail-shell{z-index:140}
+.sl-detail-shell .sl-cmp-dialog{width:min(920px,calc(100vw - 48px))}
+.sl-detail-modal-body{padding:18px 22px;overflow:auto;max-height:64vh}
+.sl-detail-modal-body .el-drawer-banner{margin:0 0 14px;padding:0 0 12px;border-bottom:1px solid #e8edf3;display:flex;align-items:center;gap:10px}
+.sl-detail-modal-body .el-id{font-family:Menlo,Consolas,monospace;font-size:12px;color:#7b8794;background:#f2f5f9;border-radius:4px;padding:2px 8px}
+.sl-detail-modal-body .el-drawer-banner b{font-size:15px;color:#1d3247}
+.sl-detail-modal-body .detail-list{display:grid;grid-template-columns:130px minmax(0,1fr) 130px minmax(0,1fr);gap:0;border:1px solid #e1e7ee}
+.sl-detail-modal-body .detail-list span,.sl-detail-modal-body .detail-list b{margin:0;padding:10px 14px;font-size:13px;font-weight:400;border-bottom:1px solid #e1e7ee;display:flex;align-items:center;min-height:40px;overflow-wrap:anywhere}
+.sl-detail-modal-body .detail-list span{background:#f5f8fb;color:#647386}
+.sl-detail-modal-body .detail-list b{color:#263b52}
+.sl-detail-modal-body .detail-list>:nth-last-child(-n+4){border-bottom:0}
+/* 侧栏分组折叠 */
+.side-group{pointer-events:auto}
+.side-group i,.side-subgroup i{transition:transform .15s}
+.side-group.folded i{transform:rotate(-90deg)}
+.side-group.active{background:var(--blue,#168bf0);color:#fff}
+.side-group.active:after{display:none}
 @media(max-width:1400px){.ledger-page>.filter-bar{gap:14px}.ledger-page>.filter-bar select{width:165px}.emergency-modal{width:620px}}
 /* 全流程预览：流程卡片状态视觉统一 */
 .ep-preview-drawer .ep-mind-node {

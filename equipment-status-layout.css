@@ -15,7 +15,7 @@
 @media(max-width:1350px){.es-filter{padding-right:84px}.es-filter-controls{max-height:30px}}
 /* 设备状态：得分趋势与维修预警统计左右各占1/2 */
 .es-charts{display:grid;grid-template-columns:1fr;gap:16px}
-.es-charts-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.es-charts-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch}
 .es-charts-pair .es-trend{grid-column:auto}
 .es-charts-pair>article{background:#fff}
 .es-health-block{background:#fff}

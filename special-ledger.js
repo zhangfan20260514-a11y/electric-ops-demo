@@ -69,23 +69,29 @@
     },Object.fromEntries(sp.cols.map(([key],j)=>[key,pick(sp.vals[key],i+j*2)]))));
   });
 
-  /* ===== 设备核对对比数据（生产系统 vs 集中监测） ===== */
-  const compareData={
-    prod:[
-      {line:'重庆东环线',station:'龙兴站',type:'道岔',name:'1#'},
-      {line:'重庆东环线',station:'龙兴站',type:'轨道电路',name:'X1LQ(L)BG'},
-      {line:'成渝中线',station:'简州站',type:'信号机',name:'X2JG'},
-      {line:'重庆东环线',station:'迎龙站',type:'道岔',name:'5#'},
-      {line:'成渝中线',station:'天府站',type:'轨道电路',name:'4DG'}
-    ],
-    cma:[
-      {line:'重庆东环线',station:'龙兴站',type:'道岔',name:'1#'},
-      {line:'重庆东环线',station:'龙兴站',type:'轨道电路',name:'X1LQ(L)BG'},
-      {line:'成渝中线',station:'简州站',type:'信号机',name:'X2JG'},
-      {line:'重庆东环线',station:'樵坪山所',type:'轨道电路',name:'J2G'},
-      {line:'成渝中线',station:'资阳西站',type:'信号机',name:'S3XL'}
-    ]
+  /* ===== 设备核对对比数据（生产系统 vs 集中监测，按设备类型维度） ===== */
+  const CMP_DATA={
+    switch:{
+      prod:[{line:'重庆东环线',station:'龙兴站',type:'道岔',name:'1#'},{line:'重庆东环线',station:'迎龙站',type:'道岔',name:'5#'},{line:'成渝中线',station:'简州站',type:'道岔',name:'3#'}],
+      cma:[{line:'重庆东环线',station:'龙兴站',type:'道岔',name:'1#'},{line:'成渝中线',station:'简州站',type:'道岔',name:'3#'},{line:'重庆东环线',station:'樵坪山所',type:'道岔',name:'7#'}]
+    },
+    circuit:{
+      prod:[{line:'重庆东环线',station:'龙兴站',type:'轨道电路',name:'X1LQ(L)BG'},{line:'成渝中线',station:'天府站',type:'轨道电路',name:'4DG'}],
+      cma:[{line:'重庆东环线',station:'龙兴站',type:'轨道电路',name:'X1LQ(L)BG'},{line:'重庆东环线',station:'樵坪山所',type:'轨道电路',name:'J2G'}]
+    },
+    signal:{
+      prod:[{line:'成渝中线',station:'简州站',type:'信号机',name:'X2JG'},{line:'成渝中线',station:'天府站',type:'信号机',name:'X4JG'}],
+      cma:[{line:'成渝中线',station:'简州站',type:'信号机',name:'X2JG'},{line:'成渝中线',station:'资阳西站',type:'信号机',name:'S3XL'}]
+    }
   };
+  SPECIAL.forEach(sp=>{
+    const list=otherDevices[sp.key]||[];
+    const mk=d=>({line:d.line,station:d.station,type:sp.label,name:d.name});
+    CMP_DATA[sp.key]={
+      prod:list.slice(0,3).map(mk),
+      cma:[...list.slice(0,1).map(mk),...list.slice(3,5).map(mk)]
+    };
+  });
 
   /* ===== 通用页面工厂 ===== */
   const opt=(items,label)=>`<option value="">全部${label}</option>${items.map(x=>`<option>${x}</option>`).join('')}`;
@@ -122,18 +128,19 @@
     const label=isSwitch?'道岔设备':SPECIAL.find(x=>x.key===key)?.label||key;
     const typeOptions=isSwitch?['单开','对开','交分']:[label];
     requestAnimationFrame(()=>{const root=document.querySelector(`[data-sl-view="${key}"]`);if(root)cfg.render();const it=document.querySelector('[data-sl-items]'),ex=document.querySelector('[data-sl-expand]');if(it&&ex){const need=it.scrollHeight>44;ex.style.display=need?'':'none';it.classList.remove('expanded');ex.textContent='展开 ⌄'}});
-    return `<div class="el-page standard-page" data-sl-view="${key}"><header class="el-heading"><div><h1>${label}</h1><p>${label}台账信息管理${isSwitch?' · 台账数据对照道岔台账导出表':''}</p></div><span>数据更新：2026-10-20 09:30</span></header><section class="data-panel"><div class="filter-bar el-filter sl-filterbar"><div class="sl-filter-items" data-sl-items><label>部门<select class="sl-dept">${opt(depts,'部门')}</select></label><label>线别<select class="sl-line">${opt(lines,'线别')}</select></label><label>车站<select class="sl-station">${opt(stations,'车站')}</select></label><label>设备类型<select class="sl-type">${opt(typeOptions,'类型')}</select></label><label class="el-keyword">设备名称<input class="sl-name" placeholder="请输入设备名称"></label><label>设备状态<select class="sl-status"><option value="">全部状态</option><option>启用</option><option>停用</option></select></label></div><button class="sl-expand-btn" type="button" data-sl-expand>展开 ⌄</button><div class="sl-filter-btns"><button data-sl-query="${key}">查询</button><button data-sl-reset="${key}">重置</button></div></div>${isSwitch?'<div class="sl-action-row"><button class="primary-action" id="slCompareBtn">设备核对</button></div>':''}<div class="table-wrap"><table class="design-table el-table"><thead><tr>${cfg.cols.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody data-sl-rows>${cfg.rows()}</tbody></table></div><footer class="el-pager" data-sl-pager>${cfg.pager()}</footer></section></div>`;
+    return `<div class="el-page standard-page" data-sl-view="${key}"><header class="el-heading"><div><h1>${label}</h1><p>${label}台账信息管理${isSwitch?' · 台账数据对照道岔台账导出表':''}</p></div><span>数据更新：2026-10-20 09:30</span></header><section class="data-panel"><div class="filter-bar el-filter sl-filterbar"><div class="sl-filter-items" data-sl-items><label>部门<select class="sl-dept">${opt(depts,'部门')}</select></label><label>线别<select class="sl-line">${opt(lines,'线别')}</select></label><label>车站<select class="sl-station">${opt(stations,'车站')}</select></label><label>设备类型<select class="sl-type">${opt(typeOptions,'类型')}</select></label><label class="el-keyword">设备名称<input class="sl-name" placeholder="请输入设备名称"></label><label>设备状态<select class="sl-status"><option value="">全部状态</option><option>启用</option><option>停用</option></select></label></div><button class="sl-expand-btn" type="button" data-sl-expand>展开 ⌄</button><div class="sl-filter-btns"><button data-sl-query="${key}">查询</button><button data-sl-reset="${key}">重置</button></div></div><div class="sl-action-row"><button class="primary-action" data-sl-cmp="${key}">设备核对</button></div><div class="table-wrap"><table class="design-table el-table"><thead><tr>${cfg.cols.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody data-sl-rows>${cfg.rows()}</tbody></table></div><footer class="el-pager" data-sl-pager>${cfg.pager()}</footer></section></div>`;
   }
 
   /* ===== 设备核对弹框（同线、同站、同设备类型维度对比） ===== */
   const cmpSame=(a,b)=>a.line===b.line&&a.station===b.station&&a.type===b.type&&a.name===b.name;
   const cmpRows=list=>list.map(d=>`<tr class="sl-cmp-diff"><td>${d.line}</td><td>${d.station}</td><td>${d.type}</td><td>${d.name}</td></tr>`).join('')||'<tr><td colspan="4" style="text-align:center;color:#98a5b3;padding:18px 0">无差异设备</td></tr>';
-  function openCompare(){
+  function openCompare(key){
     if(document.querySelector('.sl-cmp-shell'))return;
-    const prodOnly=compareData.prod.filter(p=>!compareData.cma.some(c=>cmpSame(c,p)));
-    const cmaOnly=compareData.cma.filter(c=>!compareData.prod.some(p=>cmpSame(p,c)));
+    const data=CMP_DATA[key]||{prod:[],cma:[]};
+    const prodOnly=data.prod.filter(p=>!data.cma.some(c=>cmpSame(c,p)));
+    const cmaOnly=data.cma.filter(c=>!data.prod.some(p=>cmpSame(p,c)));
     const shell=document.createElement('div');shell.className='sl-cmp-shell';
-    shell.innerHTML=`<div class="sl-cmp-mask" data-sl-cmp-close></div><section class="sl-cmp-dialog" role="dialog" aria-modal="true"><header><b>设备核对 — 台账数据对比</b><button data-sl-cmp-close aria-label="关闭">×</button></header><div class="sl-cmp-body"><div class="sl-cmp-col"><h3>生产系统设备台账</h3><table><thead><tr><th>线路</th><th>车站</th><th>设备类型</th><th>设备名称</th></tr></thead><tbody>${cmpRows(prodOnly)}</tbody></table></div><div class="sl-cmp-col"><h3>集中监测设备台账</h3><table><thead><tr><th>线路</th><th>车站</th><th>设备类型</th><th>设备名称</th></tr></thead><tbody>${cmpRows(cmaOnly)}</tbody></table></div></div><footer><span class="sl-cmp-note">按同线路、同车站、同设备类型维度匹配，仅对比道岔、轨道电路、信号机三大类型，展示两侧不同的设备列表</span><button class="primary-action" data-sl-cmp-close>关闭</button></footer></section>`;
+    shell.innerHTML=`<div class="sl-cmp-mask" data-sl-cmp-close></div><section class="sl-cmp-dialog" role="dialog" aria-modal="true"><header><b>设备核对 — 台账数据对比</b><button data-sl-cmp-close aria-label="关闭">×</button></header><div class="sl-cmp-body"><div class="sl-cmp-col"><h3>生产系统设备台账</h3><table><thead><tr><th>线路</th><th>车站</th><th>设备类型</th><th>设备名称</th></tr></thead><tbody>${cmpRows(prodOnly)}</tbody></table></div><div class="sl-cmp-col"><h3>集中监测设备台账</h3><table><thead><tr><th>线路</th><th>车站</th><th>设备类型</th><th>设备名称</th></tr></thead><tbody>${cmpRows(cmaOnly)}</tbody></table></div></div><footer><span class="sl-cmp-note">按同线路、同车站、同设备类型维度匹配，展示两侧不同的设备列表</span><button class="primary-action" data-sl-cmp-close>关闭</button></footer></section>`;
     document.body.appendChild(shell);requestAnimationFrame(()=>shell.classList.add('open'));
   }
   function closeCompare(){const s=document.querySelector('.sl-cmp-shell');if(!s)return;s.classList.remove('open');setTimeout(()=>s.remove(),200)}
@@ -143,7 +150,7 @@
     const ex=e.target.closest('[data-sl-expand]');
     if(ex){const it=document.querySelector('[data-sl-items]');if(it){const open=it.classList.toggle('expanded');ex.textContent=open?'收起 ⌃':'展开 ⌄'}return}
     if(e.target.closest('[data-sl-dclose]')){closeDetailModal();return}
-    if(e.target.closest('#slCompareBtn')){openCompare();return}
+    const cmpBtn=e.target.closest('[data-sl-cmp]');if(cmpBtn){openCompare(cmpBtn.dataset.slCmp);return}
     if(e.target.closest('[data-sl-cmp-close]')){closeCompare();return}
     const q=e.target.closest('[data-sl-query]');
     if(q){const root=q.closest('[data-sl-view]');const cfg=views[root.dataset.slView];cfg.readFilters(root);cfg.render();return}

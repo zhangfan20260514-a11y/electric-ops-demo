@@ -56,19 +56,7 @@ window.AppConfig = {
       {title:'包保管理',route:'#/person/responsibility',icon:'assets/nav-package.png'}
     ],
     equipment: [
-      {title:'设备台账',group:true,route:'#/equipment/ledger',icon:'assets/nav-package.png'},
-      {title:'设备台账',route:'#/equipment/ledger/list',icon:'assets/nav-person.png',child:true},
-      {title:'道岔设备',route:'#/equipment/ledger/switch',icon:'assets/nav-equipment/switch.svg',child:true},
-      {title:'轨道电路',route:'#/equipment/ledger/circuit',icon:'assets/nav-equipment/circuit.svg',child:true},
-      {title:'信号机',route:'#/equipment/ledger/signal',icon:'assets/nav-equipment/signal.svg',child:true},
-      {title:'室内设备',route:'#/equipment/ledger/indoor',icon:'assets/nav-equipment/indoor.svg',child:true},
-      {title:'驼峰设备',route:'#/equipment/ledger/hump',icon:'assets/nav-equipment/hump.svg',child:true},
-      {title:'列控室外设备',route:'#/equipment/ledger/ctcs',icon:'assets/nav-equipment/ctcs.svg',child:true},
-      {title:'电缆线路',route:'#/equipment/ledger/cable',icon:'assets/nav-equipment/cable.svg',child:true},
-      {title:'中心设备',route:'#/equipment/ledger/center',icon:'assets/nav-equipment/center.svg',child:true},
-      {title:'道口设备',route:'#/equipment/ledger/crossing',icon:'assets/nav-equipment/crossing.svg',child:true},
-      {title:'防雷设备',route:'#/equipment/ledger/lightning',icon:'assets/nav-equipment/lightning.svg',child:true},
-      {title:'电缆槽',route:'#/equipment/ledger/trough',icon:'assets/nav-equipment/trough.svg',child:true},
+      {title:'设备台账',route:'#/equipment/ledger',icon:'assets/nav-package.png'},
       {title:'备品台账',route:'#/equipment/spares',icon:'assets/nav-equipment/spares.svg'},
       {title:'问题管控',route:'#/equipment/issues',icon:'assets/nav-equipment/issues.svg'}
     ],

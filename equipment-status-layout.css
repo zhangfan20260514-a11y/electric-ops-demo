@@ -1,10 +1,13 @@
 /* 设备状态页：筛选、统计、列表的上中下布局 */
 .es-page{align-items:stretch}
 .es-tree-panel{position:relative;top:auto;height:auto;min-height:100%;align-self:stretch;background:#fff}
-.es-filter{position:relative;display:block;padding-right:92px;margin:16px 0 14px}
-.es-filter-controls{display:flex;flex-wrap:wrap;gap:10px;max-height:30px;overflow:hidden}
+.es-filter{position:relative;display:flex;align-items:flex-start;gap:10px;padding-right:0;margin:16px 0 14px}
+.es-filter-controls{display:flex;flex-wrap:wrap;gap:10px;flex:1;min-width:0;max-height:30px;overflow:hidden}
 .es-filter-controls.expanded{max-height:none;overflow:visible}
-.es-filter-toggle{position:absolute;right:14px;top:16px;color:#0879f9!important;border-color:#9dcaff!important;background:#fff!important}
+.es-filter-actions{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto}
+.es-filter-actions button{height:30px;padding:0 17px;cursor:pointer}
+.es-filter-actions .primary-action{background:#0879f9;border-color:#0879f9;color:#fff}
+.es-filter-toggle{color:#0879f9!important;border-color:#9dcaff!important;background:#fff!important}
 .es-filter-toggle[hidden]{display:none}
 .es-statistics{background:#fff;border:1px solid #e5ebf2;padding:0 14px 14px;margin-bottom:14px}
 .es-section-title{height:52px;display:flex;align-items:center;justify-content:space-between}

@@ -368,7 +368,22 @@ body.sidebar-collapsed main {
 .es-rank th{color:#7b8794;font-weight:600;background:#f7f9fc}
 .es-rank td.es-action{position:static;box-shadow:none}
 .es-rank .es-rank-btn{border:0;background:none;color:#0879f9;cursor:pointer;font-size:12px;white-space:nowrap;padding:0}
-.es-rank td:last-child,.es-rank th:last-child{position:static!important;background:#fff}
+.es-rank td:last-child,.es-rank th:last-child{position:static!important}
+.es-rank td:last-child{background:#fff}
+.es-rank th:last-child{background:#f7f9fc}
+/* 专项综合得分卡片：上下布局（图标在上，文字在下） */
+.es-score-inline{display:flex;flex-direction:column}
+.es-score-inline>.es-score-cards{flex:1;display:flex;flex-direction:column}
+.es-score-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:0;padding:22px 18px;flex:1}
+.es-score-card .es-score-icon{width:56px;height:56px;flex:none;display:block;margin:0 auto 14px;filter:drop-shadow(0 3px 9px rgba(22,139,240,.3))}
+.es-score-card .es-score-text{min-width:0;width:100%}
+.es-score-card .es-score-text>span{margin:0}
+.es-score-card .es-score-text>strong{margin:8px 0 6px;font-size:32px}
+.es-score-card .es-score-text>small{margin:0}
+/* 红黑榜标题背景图：复用人员统计 荣誉榜/进步榜 的标题底图 */.es-rank{padding:0 18px 16px;overflow:hidden;box-sizing:border-box}
+.es-rank>h2{height:62px;margin:0 -18px 14px;padding:0 18px;display:flex;align-items:center;background-position:center;background-repeat:no-repeat;background-size:cover;box-sizing:border-box}
+.es-rank-light>h2{background-image:url('assets/person-statistics/honor-header.png')}
+.es-rank-dark>h2{background-image:url('assets/person-statistics/progress-header.png')}
 /* 设备管理-台账子菜单：设备核对弹框 */
 .sl-cmp-shell{position:fixed;inset:0;z-index:130;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
 .sl-cmp-shell.open{opacity:1;pointer-events:auto}
@@ -420,7 +435,8 @@ body.sidebar-collapsed main {
 .sl-detail-modal-body .detail-list b{color:#263b52}
 .sl-detail-modal-body .detail-list>:nth-last-child(-n+4){border-bottom:0}
 /* 侧栏分组折叠 */
-.side-group{pointer-events:auto}
+.side-group{pointer-events:auto;cursor:pointer}
+.sidebar .side-group,.sidebar .side-group span,.sidebar .side-group i{pointer-events:auto}
 .side-group i,.side-subgroup i{transition:transform .15s}
 .side-group.folded i{transform:rotate(-90deg)}
 .side-group.active{background:var(--blue,#168bf0);color:#fff}

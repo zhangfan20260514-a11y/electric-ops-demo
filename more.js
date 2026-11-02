@@ -36,6 +36,6 @@
     ]}
   ];
   function page(){return `<div class="more-page"><header class="more-heading"><div><h1>更多菜单</h1><p>系统全部功能模块的统一入口，点击卡片即可进入对应页面</p></div></header>${groups.map(g=>`<section class="more-group"><h2>${g.title}</h2><div class="more-grid">${g.items.map((it,i)=>`<button class="more-card tone-${i%5}" data-route="${it.route}"><span class="more-icon">${it.icon}</span><div class="more-text"><b>${it.name}</b><small>${it.desc}</small></div><i class="more-arrow">→</i></button>`).join('')}</div></section>`).join('')}</div>`}
-  document.addEventListener('click',e=>{const card=e.target.closest('[data-route]');if(card){location.hash=card.dataset.route}});
+  document.addEventListener('click',e=>{const card=e.target.closest('.more-page [data-route]');if(card){location.hash=card.dataset.route}});
   window.PageViews.more=page;
 })();

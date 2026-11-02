@@ -358,6 +358,26 @@ body.sidebar-collapsed main {
 .es-timeline p{margin:0;font-size:13px;color:#20344b;line-height:1.5}
 .es-timeline p small{display:block;color:#8a96a6;font-size:12px;margin-top:3px}
 .es-tl-empty{color:#97a3b1;font-size:13px;list-style:none}
+/* 合并时间轴：左侧告警 / 右侧维修（紧凑水平对齐） */
+.es-tl-merged{margin-top:14px}
+.es-tl-legend{display:flex;gap:20px;font-size:12px;color:#66768a;margin-bottom:10px}
+.es-tl-legend span:before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.es-tl-legend .lg-a:before{background:#ef5350}
+.es-tl-legend .lg-r:before{background:#13b980}
+.es-timeline.merged{list-style:none;margin:0;padding:4px 0;border-left:none;position:relative;display:block;gap:0}
+.es-timeline.merged:before{content:'';position:absolute;left:50%;top:12px;bottom:12px;width:2px;background:#dfe6ee;transform:translateX(-50%)}
+.es-timeline.merged li{position:relative;display:grid;grid-template-columns:1fr 10px 1fr;align-items:center;margin:0 0 12px}
+.es-timeline.merged li:last-child{margin-bottom:0}
+.es-tl-axis{grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center;z-index:1;position:static}
+.es-timeline.merged li i{position:static;left:auto;top:auto;flex:none;width:10px;height:10px;border-radius:50%;background:#fff;border:3px solid #0879f9;box-sizing:border-box}
+.es-timeline.merged li.side-alarm .es-tl-axis i{border-color:#ef5350}
+.es-timeline.merged li.side-repair .es-tl-axis i{border-color:#13b980}
+.es-timeline.merged .es-card{grid-row:1;min-width:0;background:#fff;border:1px solid #e4eaf1;border-radius:8px;padding:8px 11px}
+.es-timeline.merged .es-card b{display:block;font-size:12px;color:#5d6d80;font-weight:600;margin-bottom:3px}
+.es-timeline.merged li.side-alarm .es-card{grid-column:1;justify-self:end;width:min(100%,260px);margin-right:8px;border-left:3px solid #ef5350;background:#fff5f5;border-color:#f3d2d2}
+.es-timeline.merged li.side-repair .es-card{grid-column:3;justify-self:start;width:min(100%,260px);margin-left:8px;border-left:3px solid #13b980;background:#f2fbf7;border-color:#cfe9de}
+.es-timeline.merged .es-card p{margin:0;font-size:13px;color:#20344b;line-height:1.5}
+.es-timeline.merged .es-card p small{display:block;color:#8a96a6;font-size:12px;margin-top:2px}
 .es-modal-footer{display:flex;justify-content:flex-end;padding-top:14px;margin-top:16px;border-top:1px solid #eef2f7}
 .es-modal-footer .primary-action{height:32px;padding:0 22px;border:1px solid #168bf0;border-radius:3px;cursor:pointer;font-size:13px}
 /* 设备状态页：专项汇总评分红黑榜 */
@@ -422,6 +442,21 @@ body.sidebar-collapsed main {
 .sl-expand-btn{flex:0 0 auto;border:0;background:none;color:#0879f9;font-size:13px;cursor:pointer;white-space:nowrap;padding:0 2px}
 .sl-filter-btns{flex:0 0 auto;display:flex;gap:8px;margin-left:auto}
 .sl-action-row{display:flex;align-items:center;margin:12px 0 0}
+/* 设备台账页：树与表格同一行（统计卡/筛选条全宽在上） */
+.el-body-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:14px;align-items:start;margin-top:14px}
+.el-cat-tree{background:#f8fafc;border:1px solid #e4eaf1;border-radius:6px;padding:12px 8px;position:sticky;top:12px}
+.el-main-area{min-width:0}
+.el-main-area .el-page{margin:0;padding:0;background:transparent;border:none;box-shadow:none;min-height:0}
+.el-sub-head .el-heading{margin-bottom:12px}
+.el-sub-head .filter-bar{margin-bottom:0}
+.el-cat-tree h2{font-size:14px;margin:0 6px 10px;color:#20344b;border-bottom:1px solid #edf1f5;padding-bottom:10px}
+.el-cat-list{display:flex;flex-direction:column;gap:2px}
+.el-cat-node{display:flex;align-items:center;gap:8px;border:0;background:none;text-align:left;padding:9px 10px;border-radius:4px;cursor:pointer;font-size:13.5px;color:#3b4e63;white-space:nowrap;width:100%}
+.el-cat-node:hover{background:#eef7ff}
+.el-cat-node.active{background:#dcefff;color:#0879f9;font-weight:700}
+.el-cat-node.lv1{font-weight:600;color:#20344b}
+.el-cat-node.lv1 i{font-style:normal;font-size:10px;color:#8290a2}
+.el-cat-node.lv2{padding-left:26px;font-size:13px}
 /* 台账详情居中弹框 */
 .sl-detail-shell{z-index:140}
 .sl-detail-shell .sl-cmp-dialog{width:min(920px,calc(100vw - 48px))}

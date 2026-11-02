@@ -1,0 +1,27 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="4" y1="36" x2="36" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f7ae0"/>
+      <stop offset="50%" stop-color="#168bf0"/>
+      <stop offset="100%" stop-color="#66d0ff"/>
+    </linearGradient>
+    <linearGradient id="arcOn" x1="10" y1="28" x2="30" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d8efff"/>
+    </linearGradient>
+  </defs>
+  <!-- 圆形底衬 -->
+  <circle cx="20" cy="20" r="20" fill="url(#bg)"/>
+  <circle cx="20" cy="20" r="17" fill="#ffffff" fill-opacity="0.14"/>
+  <!-- 仪表轨道（粗） -->
+  <path d="M8.6 26.4A12 12 0 0 1 31.4 26.4" stroke="#ffffff" stroke-opacity="0.38" stroke-width="6.4" stroke-linecap="round"/>
+  <!-- 已达成弧段（饱满实心） -->
+  <path d="M8.6 26.4A12 12 0 0 1 31.4 26.4" stroke="url(#arcOn)" stroke-width="6.4" stroke-linecap="round" stroke-dasharray="30.1 37.7"/>
+  <!-- 指针 -->
+  <path d="M20 20.2L27.4 12.8" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round"/>
+  <circle cx="20" cy="20.2" r="4.2" fill="#ffffff"/>
+  <circle cx="20" cy="20.2" r="1.8" fill="#168bf0"/>
+  <!-- 两端刻度点 -->
+  <circle cx="8.6" cy="26.4" r="1.9" fill="#ffffff"/>
+  <circle cx="31.4" cy="26.4" r="1.9" fill="#ffffff"/>
+</svg>

@@ -378,6 +378,123 @@ body.sidebar-collapsed main {
 .es-timeline.merged li.side-repair .es-card{grid-column:3;justify-self:start;width:min(100%,260px);margin-left:8px;border-left:3px solid #13b980;background:#f2fbf7;border-color:#cfe9de}
 .es-timeline.merged .es-card p{margin:0;font-size:13px;color:#20344b;line-height:1.5}
 .es-timeline.merged .es-card p small{display:block;color:#8a96a6;font-size:12px;margin-top:2px}
+/* 工作台：检修告警关联卡片（标准表格样式） */
+.wb-relation .wb-relation-table{border:1px solid #e5eaf1}
+.wb-relation-table table{min-width:100%;table-layout:fixed;border-collapse:collapse}
+.wb-relation-table th{position:sticky;top:0;z-index:1;background:#f5f8fb;color:#52677e;font-weight:600;font-size:13px;text-align:left;padding:10px 8px;border-bottom:1px solid #e5eaf1}
+.wb-relation-table td{padding:9px 8px;border-bottom:1px solid #eef2f7;font-size:13px;color:#25364a}
+.wb-relation-table tbody tr:hover td{background:#f7faff}
+.wb-relation-table th:nth-child(1){width:52px}
+.wb-relation-table th:nth-child(2){width:92px}
+.wb-relation-table th:nth-child(3){width:92px}
+.wb-relation-table th:nth-child(6){width:118px}
+.wb-relation-table th:nth-child(7){width:88px}
+.wb-relation .wb-interval{display:inline-block;min-width:38px;text-align:center;padding:1px 6px;border-radius:10px;font-size:12px;background:#eef4fb;color:#3d6a96}
+.wb-pager{display:flex;gap:6px;justify-content:flex-end;align-items:center;padding-top:12px;font-size:12px;color:#65778b}
+.wb-pager button{min-width:28px;height:28px;border:1px solid #ccd6e1;background:#fff;color:#3d5169;cursor:pointer;font-size:13px}
+.wb-pager button.active{background:#168bff;border-color:#168bff;color:#fff}
+.wb-pager button:disabled{opacity:.4;cursor:default}
+.wb-pager span{margin-left:6px}
+/* 登销记模版维护 */
+.rt-table-wrap{overflow-x:auto}
+.rt-table{min-width:1780px}
+.rt-table th,.rt-table td{white-space:nowrap}
+.rt-table td.rt-register,.rt-table td.rt-cancel{max-width:240px;white-space:normal;min-width:180px}
+/* 登销记操作列固定右侧 + 按钮间距 */
+.rt-table th:last-child,.rt-table td:last-child{position:sticky;right:0;z-index:3;min-width:190px;text-align:center}
+.rt-table thead th:last-child{background:#fafafa}
+.rt-table tbody td:last-child{background:#fff;box-shadow:-8px 0 10px -8px rgba(31,56,88,.22)}
+.rt-table tbody tr:hover td:last-child{background:#f2f8ff}
+.rt-table td:last-child button{margin:0}
+.rt-table td:last-child button+button{margin-left:16px}
+.pm-head-actions{display:flex;gap:8px;align-items:center}
+.rt-actions-row{display:flex;gap:8px;align-items:center;padding-bottom:12px}
+.rt-actions-row .primary-action,.rt-actions-row .pm-import-btn{margin:0}
+.pm-import-btn{display:inline-flex;align-items:center;justify-content:center;height:34px;padding:0 16px;background:#fff;border:1px solid #ccd6e1;color:#2a3f57;cursor:pointer;border-radius:2px}
+.pm-import-btn:hover{border-color:#168bff;color:#168bff}
+.pm-fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
+.pm-fields-grid label{display:grid;gap:5px;font-size:13px;color:#4a5c72}
+.pm-fields-grid .req{color:#ef5350;font-style:normal;margin-left:2px}
+.pm-fields-grid input,.pm-fields-grid select,.pm-fields-grid textarea{width:100%;height:34px;border:1px solid #ccd6e1;padding:0 10px;font:inherit;box-sizing:border-box}
+.pm-fields-grid textarea{height:auto;padding:8px 10px;resize:vertical}
+.rt-view-dialog{width:96vw;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow-x:hidden}
+.a4-sheet{width:100%;min-height:0;background:#fff;padding:36px 44px;box-sizing:border-box;margin:0 auto;font-family:'SimSun','Songti SC',serif}
+.a4-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid #25364a;padding-bottom:12px;margin-bottom:20px}
+.a4-head b{font-size:24px;letter-spacing:4px;color:#1d2f45}
+.a4-head small{font-size:12px;color:#7c8a99}
+.a4-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;border:1px solid #c9d3dd}
+.a4-grid>div{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid #dfe6ee}
+.a4-grid>div:nth-last-child(-n+2){border-bottom:none}
+.a4-grid>div.wide{grid-column:1/-1}
+.a4-grid dt{margin:0;padding:10px 12px;background:#f4f7fa;border-right:1px solid #dfe6ee;font-size:13px;color:#4a5c72}
+.a4-grid dd{margin:0;padding:10px 12px;font-size:13px;color:#1d2f45;line-height:1.6}
+.a4-note{margin-top:16px;font-size:12px;color:#8a96a6;text-align:right}
+.pm-confirm{width:400px}
+.pm-confirm-body{padding:22px 4px;font-size:14px;color:#2a3f57;line-height:1.6}
+.pm-confirm-footer{display:flex;justify-content:flex-end;gap:10px;padding-top:6px}
+.pm-confirm-footer button{height:34px;min-width:76px;border:1px solid #ccd6e1;background:#fff;cursor:pointer}
+.rt-danger{background:#ef5350!important;border-color:#ef5350!important;color:#fff!important}
+/* 应急交通时间表：双层表头列表 */
+.tt-table{min-width:3200px}
+.tt-table thead tr:first-child th{background:#c9dcf0;color:#2f5d8f;text-align:center}
+.tt-table thead tr:nth-child(2) th{background:#e2edf9;color:#2f5d8f;font-weight:600;white-space:nowrap}
+.tt-table td,.tt-table th{white-space:nowrap}
+.tt-table td.tt-remark{max-width:200px;white-space:normal;min-width:150px}
+.tt-thumb{width:44px;height:30px;object-fit:cover;border:1px solid #d7dfe8;cursor:zoom-in;border-radius:3px;background:#f5f8fb}
+.tt-zoom-dialog{width:auto;max-width:calc(100vw - 80px)}
+.tt-zoom-body img{max-width:calc(100vw - 160px);max-height:calc(100vh - 220px);display:block;margin:0 auto}
+.tt-view-dialog{width:96vw;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto}
+.tt-view-dialog>header{height:44px;padding:0 16px}
+.tt-view-dialog .tt-view-groups{padding:12px 14px}
+.tt-view-groups .tt-form-group{margin-bottom:10px}
+.tt-view-groups .tt-form-group h4{padding:6px 12px;font-size:12px}
+.tt-form-group{margin-bottom:14px}
+.tt-form-group h4{margin:0 0 8px;font-size:13px;color:#168bff;border-left:3px solid #168bff;padding-left:8px}
+.tt-img-field .tt-img-box{width:100%;height:64px;border:1px dashed #b9c7d6;border-radius:4px;display:flex;align-items:center;gap:8px;justify-content:center;cursor:pointer;overflow:hidden;background:#fafcfe}
+.tt-img-field .tt-img-box:hover{border-color:#168bff}
+.tt-img-field .tt-pv{max-height:60px;max-width:70%;object-fit:contain}
+.tt-img-field .tt-img-box span{font-size:12px;color:#8a96a6}
+.tt-view-img{max-width:100%;max-height:220px;border:1px solid #d7dfe8;border-radius:4px;cursor:zoom-in}
+.tt-view-groups .a4-grid{grid-template-columns:repeat(4,1fr)}
+.tt-view-groups .a4-grid>div{grid-template-columns:92px 1fr}
+.tt-view-groups .a4-grid dt{padding:6px 8px;font-size:11px;white-space:nowrap}
+.tt-view-groups .a4-grid dd{padding:6px 8px;font-size:12px;line-height:1.5}
+/* 弹窗表单优化：3列布局、星号前置、圆角输入框 */
+.tt-page .pm-dialog{width:980px;max-width:calc(100vw - 60px);max-height:calc(100vh - 80px);overflow:auto}
+.tt-form .pm-fields-grid{grid-template-columns:repeat(3,1fr);gap:16px 24px}
+.tt-form .pm-fields-grid label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#333}
+.tt-form .tt-lab{display:block;font-size:13px;color:#333;line-height:1.4}
+.tt-form .req{margin:0 3px 0 0;font-style:normal;color:#ef5350}
+.tt-form .pm-fields-grid input,.tt-form .pm-fields-grid select,.tt-form .pm-fields-grid textarea{height:36px;border:1px solid #d9dfe7;border-radius:4px;background:#fff;padding:0 12px;font:inherit;color:#333;box-sizing:border-box;width:100%}
+.tt-form .pm-fields-grid textarea{height:auto;min-height:72px;padding:8px 12px;resize:vertical}
+.tt-form .pm-fields-grid input:focus,.tt-form .pm-fields-grid select:focus,.tt-form .pm-fields-grid textarea:focus{border-color:#168bff;outline:none;box-shadow:0 0 0 2px rgba(22,139,255,.12)}
+.tt-form .tt-img-field .tt-img-box{height:70px}
+/* 分组卡片化：浅灰底+白卡片+标题栏 */
+.tt-page .pm-dialog form[data-pm-form]>div[data-pm-fields]{display:block;padding:0}
+.tt-page form[data-pm-form]{padding:0;display:flex;flex-direction:column;max-height:calc(100vh - 160px)}
+.tt-page form[data-pm-form]>footer{padding:12px 16px;border-top:1px solid #e8eef5;background:#fff;flex:none;margin:0}
+.tt-form{background:#f7f9fb;padding:14px 16px;overflow:auto;box-sizing:border-box;text-align:left}
+.tt-form .tt-form-group{margin-bottom:14px;border:1px solid #e3e9f1;border-radius:6px;background:#fff;overflow:hidden}
+.tt-form .tt-form-group:last-child{margin-bottom:0}
+.tt-form .tt-form-group h4{margin:0;padding:10px 14px;background:#f2f7fc;color:#2f5d8f;font-size:13px;border-left:none;border-bottom:1px solid #e8eef5;text-align:left}
+.tt-form .tt-form-group .pm-fields-grid{padding:16px 14px 4px;text-align:left}
+.tt-form .pm-fields-grid label{align-items:stretch;justify-items:start;text-align:left}
+.tt-form .pm-fields-grid label.wide{grid-column:1/-1}
+/* 登销记弹窗与出行交通弹窗同款布局 */
+.rt-page .pm-dialog{width:980px;max-width:calc(100vw - 60px);max-height:calc(100vh - 80px);overflow:auto}
+.rt-page .pm-dialog form[data-pm-form]>div[data-pm-fields]{display:block;padding:0}
+.rt-page form[data-pm-form]{padding:0;display:flex;flex-direction:column;max-height:calc(100vh - 160px)}
+.rt-page form[data-pm-form]>footer{padding:12px 16px;border-top:1px solid #e8eef5;background:#fff;flex:none;margin:0}
+/* 操作列固定右侧（表头上下两格拼接，规避rowspan+sticky裁剪） */
+.tt-table th[data-tt-op-spacer],.tt-table th.tt-op-head,.tt-table td:last-child{position:sticky;right:0;z-index:3}
+.tt-table th[data-tt-op-spacer]{background:#c9dcf0;border-bottom:none!important}
+.tt-table th.tt-op-head{background:#c9dcf0;color:#2f5d8f;font-weight:600;min-width:190px;text-align:center;vertical-align:middle}
+.tt-table td:last-child{min-width:190px;text-align:center;background:#fff;box-shadow:-8px 0 10px -8px rgba(31,56,88,.22)}
+.tt-table tbody tr:hover td:last-child{background:#f2f8ff}
+.tt-table td:last-child button{margin:0}
+.tt-table td:last-child button+button{margin-left:16px}
+.wb-relation .wb-interval.hot{background:#fdecec;color:#d64545}
+.wb-relation .wb-interval.warm{background:#fdf3e3;color:#c07f1f}
 .es-modal-footer{display:flex;justify-content:flex-end;padding-top:14px;margin-top:16px;border-top:1px solid #eef2f7}
 .es-modal-footer .primary-action{height:32px;padding:0 22px;border:1px solid #168bf0;border-radius:3px;cursor:pointer;font-size:13px}
 /* 设备状态页：专项汇总评分红黑榜 */

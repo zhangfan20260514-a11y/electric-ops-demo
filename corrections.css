@@ -436,8 +436,8 @@ body.sidebar-collapsed main {
 .rt-danger{background:#ef5350!important;border-color:#ef5350!important;color:#fff!important}
 /* 应急交通时间表：双层表头列表 */
 .tt-table{min-width:3200px}
-.tt-table thead tr:first-child th{background:#c9dcf0;color:#2f5d8f;text-align:center}
-.tt-table thead tr:nth-child(2) th{background:#e2edf9;color:#2f5d8f;font-weight:600;white-space:nowrap}
+.tt-table thead tr:first-child th{background:#ededed;color:#2f5d8f;text-align:center;border:1px solid #b2b0b0}
+.tt-table thead tr:nth-child(2) th{background:#fafafa;color:#2f5d8f;font-weight:600;white-space:nowrap;border:1px solid #b2b0b0}
 .tt-table td,.tt-table th{white-space:nowrap}
 .tt-table td.tt-remark{max-width:200px;white-space:normal;min-width:150px}
 .tt-thumb{width:44px;height:30px;object-fit:cover;border:1px solid #d7dfe8;cursor:zoom-in;border-radius:3px;background:#f5f8fb}
@@ -487,8 +487,8 @@ body.sidebar-collapsed main {
 .rt-page form[data-pm-form]>footer{padding:12px 16px;border-top:1px solid #e8eef5;background:#fff;flex:none;margin:0}
 /* 操作列固定右侧（表头上下两格拼接，规避rowspan+sticky裁剪） */
 .tt-table th[data-tt-op-spacer],.tt-table th.tt-op-head,.tt-table td:last-child{position:sticky;right:0;z-index:3}
-.tt-table th[data-tt-op-spacer]{background:#c9dcf0;border-bottom:none!important}
-.tt-table th.tt-op-head{background:#c9dcf0;color:#2f5d8f;font-weight:600;min-width:190px;text-align:center;vertical-align:middle}
+.tt-table th[data-tt-op-spacer]{background:#ededed;border-bottom:none!important;border:1px solid #b2b0b0}
+.tt-table th.tt-op-head{background:#fafafa;color:#2f5d8f;font-weight:600;min-width:190px;text-align:center;vertical-align:middle;border:1px solid #b2b0b0}
 .tt-table td:last-child{min-width:190px;text-align:center;background:#fff;box-shadow:-8px 0 10px -8px rgba(31,56,88,.22)}
 .tt-table tbody tr:hover td:last-child{background:#f2f8ff}
 .tt-table td:last-child button{margin:0}

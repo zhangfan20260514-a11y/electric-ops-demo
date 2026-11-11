@@ -1,0 +1,2 @@
+/* 详情页主趋势图随内容区横向铺满，保持坐标文字比例。 */
+.ed-chart svg{display:block;width:100%;height:auto}

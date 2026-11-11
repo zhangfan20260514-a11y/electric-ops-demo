@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>去背景图标预览</title>
+<style>
+  body{margin:0;padding:32px 40px 60px;background:#12141a;color:#e8edf5;
+       font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  h1{font-size:19px;margin:0 0 6px}
+  p.lead{margin:0 0 26px;color:#8f9bad;font-size:13px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+  .card{background:#1c1f27;border:1px solid #2a2f3a;border-radius:10px;padding:14px;text-align:center}
+  .stage{height:112px;display:flex;align-items:center;justify-content:center;border-radius:8px;
+         background-image:linear-gradient(45deg,#23262f 25%,transparent 25%,transparent 75%,#23262f 75%),
+                          linear-gradient(45deg,#23262f 25%,transparent 25%,transparent 75%,#23262f 75%);
+         background-size:16px 16px;background-position:0 0,8px 8px}
+  .stage img{width:96px;height:96px}
+  .name{margin-top:10px;font-size:12px;color:#9aa7ba}
+  .row{display:flex;justify-content:center;gap:12px;margin-top:10px;font-size:11px;color:#7c8798}
+  .row img{width:24px;height:24px;display:block}
+  .dark{background:#0d0f14}
+  .light{background:#ffffff}
+  .light img{filter:none}
+</style>
+</head>
+<body>
+<h1>应急流程图标 · 已去除背景</h1>
+<p class="lead">只保留白色图形，背景透明（PNG 256×256）。文件位于 assets/emergency-steps/white/，文件名与原图标一致。</p>
+<div class="grid" id="grid"></div>
+<script>
+const files = ["step-01","step-02","step-03","step-04","step-05","step-06","step-07","step-08","step-09",
+               "step-10","step-11","step-12","step-13","step-1","step-2","step-3","step-4","step-5","step-6"];
+document.getElementById('grid').innerHTML = files.map(n => `
+  <div class="card">
+    <div class="stage"><img src="${n}.png" alt="${n}"></div>
+    <div class="name">${n}.png</div>
+    <div class="row">
+      <span class="stage light" style="height:32px;width:32px;background:#fff"><img src="${n}.png" alt=""></span>
+      <span>深/浅底对比</span>
+      <span class="stage dark" style="height:32px;width:32px;background:#0d0f14"><img src="${n}.png" alt=""></span>
+    </div>
+  </div>`).join('');
+</script>
+</body>
+</html>

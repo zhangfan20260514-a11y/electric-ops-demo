@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="看板">
+  <circle cx="16" cy="16" r="16" fill="#98D582"/>
+  <g transform="translate(16 16) scale(0.68) translate(-12 -12)" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4.4 5.6h15.2v12.8H4.4z"/>
+    <path d="M4.4 9.2h15.2"/>
+    <path d="M9.6 9.2v9.2"/>
+    <path d="M13.2 12.4h3.6"/>
+  </g>
+</svg>

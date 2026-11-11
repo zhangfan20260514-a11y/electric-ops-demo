@@ -1,0 +1,31 @@
+.lib-page{min-height:1000px;padding-bottom:10px}
+.lib-heading{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
+.lib-heading h1{font-size:22px;margin:0}
+.lib-heading p{color:var(--muted);margin:6px 0 0;font-size:13px}
+.lib-heading span{color:var(--muted);font-size:13px}
+.lib-stats{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-bottom:18px}
+.lib-stats article{background:#fff;padding:16px;border-radius:6px;box-shadow:0 1px 3px rgba(16,40,70,.06);text-align:center}
+.lib-stats span{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+.lib-stats strong{font-size:24px;color:#168bf0}
+.lib-total strong{color:#7b61ff}
+.lib-toolbar{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:14px 18px;border-radius:6px;box-shadow:0 1px 3px rgba(16,40,70,.06);margin-bottom:18px;gap:16px;flex-wrap:wrap}
+.lib-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.lib-tab{height:34px;border:1px solid #d5dce5;background:#fff;color:#34465b;padding:0 16px;cursor:pointer;border-radius:18px;font-size:13px}
+.lib-tab:hover{border-color:#7bb5ff}
+.lib-tab.active{background:#168bf0;color:#fff;border-color:#168bf0}
+.lib-search{display:flex;gap:8px}
+.lib-search input{width:240px;height:34px;border:1px solid #cfd8e3;border-radius:4px;padding:0 12px}
+.lib-search button{height:34px;padding:0 18px;background:#168bf0;color:#fff;border:0;border-radius:4px;cursor:pointer}
+.lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lib-card{background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(16,40,70,.06);padding:16px;display:flex;gap:14px;transition:.15s}
+.lib-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(26,80,130,.12)}
+.lib-icon{width:48px;height:48px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:700;flex:none}
+.lib-pdf{background:#ef5350}.lib-doc{background:#168bf0}.lib-xls{background:#18a06a}.lib-img{background:#7b61ff}.lib-video{background:#ff9f43}.lib-ppt{background:#f06292}
+.lib-info{flex:1;min-width:0;display:flex;flex-direction:column}
+.lib-info b{font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lib-meta{display:flex;gap:10px;margin:8px 0;color:var(--muted);font-size:12px;align-items:center}
+.lib-cat{background:#eef4ff;color:#168bf0;padding:2px 8px;border-radius:10px}
+.lib-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;color:#9aa7b5;font-size:12px}
+.lib-dl{height:28px;padding:0 14px;border:1px solid #168bf0;background:#fff;color:#168bf0;border-radius:4px;cursor:pointer}
+.lib-dl:hover{background:#168bf0;color:#fff}
+.lib-empty{grid-column:1/4;text-align:center;color:var(--muted);padding:50px 0;background:#fff;border-radius:6px}
